@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      HobbySpot
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Channels</h1>
+  <ul *ngFor = "let channel of channels">
+    <li (click) = goToChannel(channel) >
+        {{channel}}
+    </li>
+  </ul>
+</ion-content>
