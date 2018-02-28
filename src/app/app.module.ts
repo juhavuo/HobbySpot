@@ -10,13 +10,19 @@ import {ChannelsPage} from "../pages/channels/channels";
 import { MediaProvider } from '../providers/media/media';
 import {HttpClientModule} from "@angular/common/http";
 import {ThumbnailPipe} from "../pipes/thumbnail/thumbnail";
+import {LoginPage} from '../pages/login/login';
+import {RegisterPage} from '../pages/register/register';
+import {UploadPage} from '../pages/upload/upload';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ChannelsPage,
-    ThumbnailPipe
+    ThumbnailPipe,
+    LoginPage,
+    RegisterPage,
+    UploadPage,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,10 @@ import {ThumbnailPipe} from "../pipes/thumbnail/thumbnail";
   entryComponents: [
     MyApp,
     HomePage,
-    ChannelsPage
+    ChannelsPage,
+    LoginPage,
+    RegisterPage,
+    UploadPage,
   ],
   providers: [
     StatusBar,

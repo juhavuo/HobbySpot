@@ -1,10 +1,39 @@
 <ion-header>
+  <ion-nav #mycontent [root]="rootPage"></ion-nav>
   <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
     <ion-title>
       HobbySpot
     </ion-title>
   </ion-navbar>
 </ion-header>
+
+<ion-menu [content]="mycontent">
+  <ion-content>
+
+    <ion-list>
+      <ion-searchbar
+        [(ngModel)]="myInput"
+        [showCancelButton]="shouldShowCancel"
+        (ionInput)="onInput($event)"
+        (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+
+      <p> Recent tables </p>
+      <ion-navbar>
+        <button (click)="login()"> Log in </button>
+        <button (click)="register()"> Register </button>
+        <button (click)="upload()"> Upload </button>
+        <button (click)="logout()"> Log out </button>
+      </ion-navbar>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
 
 <ion-content padding>
   <h1>Channels</h1>

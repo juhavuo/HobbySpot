@@ -1,0 +1,23 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <h1>Register</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-line>
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="user.username" placeholder="Username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" [(ngModel)]="user.password" placeholder="Password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="email" [(ngModel)]="user.email" placeholder="Email"></ion-input>
+        </ion-item>
+        <button (click)="register()" type="submit">Sign up</button>
+      </ion-list>
+
+      <button (click)="home()"> Cancel </button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
