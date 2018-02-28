@@ -36,11 +36,13 @@ export class ChannelsPage {
     console.log('ionViewDidLoad ChannelsPage');
 
     this.mediaProvider.getAllMediaWithTag(this.channelInfo.channel_name)
-      .subscribe(response => {
+      .subscribe((response:Mediafile[]) => {
         console.log(response);
         if(response !== null && response !== undefined){
-          this.filedata = response;
-          this.mediafiles = this.filedata;
+          this.mediafiles = response;
+          for (let i; i<this.mediafiles.length;++i){
+
+          }
         }
       });
 

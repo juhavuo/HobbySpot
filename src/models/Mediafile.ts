@@ -8,4 +8,5 @@ export class Mediafile{
   media_type: string;
   mime_type: string;
   time_added: string;
+  user_name?: string;
 }

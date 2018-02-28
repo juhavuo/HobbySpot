@@ -15,10 +15,6 @@
   <ul>
     <li *ngFor = "let mediafile of mediafiles">
       <h3>{{mediafile.title}}</h3>
-      <img *ngIf="mediafile.media_type == 'image'" [src] = "mediaProvider.mediaUrl
-      +mediafile.filename">
-      <p>{{mediafile.description}}</p>
     </li>
   </ul>
-  <h6></h6>
 </ion-content>

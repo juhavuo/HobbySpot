@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {MenuController, NavController} from 'ionic-angular';
 import {ChannelsPage} from "../channels/channels";
 import {MediaProvider} from "../../providers/media/media";
 import {ChannelInfo} from "../../models/ChannelInfo";
 import {Mediafile} from "../../models/Mediafile";
 import {TagInfo} from "../../models/TagInfo";
+import {LoginPage} from "../login/login";
 
 @Component({
   selector: 'page-home',
@@ -18,7 +19,7 @@ export class HomePage {
   paramsForChannel: any;
   mainTag = 'HobbySpotTest';
 
-  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider){
+  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menuCtrl: MenuController){
 
   }
 
@@ -50,6 +51,26 @@ export class HomePage {
       "channel_name":channelname
     };
     this.navCtrl.push(ChannelsPage,this.paramsForChannel);
+  }
+
+  login(){
+    if (localStorage.getItem('token') !==null){
+
+    }else {
+      this.navCtrl.push(LoginPage);
+    }
+  }
+
+  openMenu() {
+    this.menuCtrl.open();
+  }
+
+  closeMenu() {
+    this.menuCtrl.close();
+  }
+
+  toggleMenu() {
+    this.menuCtrl.toggle();
   }
 
 }
