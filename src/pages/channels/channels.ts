@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ChannelInfo} from "../../models/ChannelInfo";
 import {MediaProvider} from "../../providers/media/media";
 import {Mediafile} from "../../models/Mediafile";
+import {HttpErrorResponse} from "@angular/common/http";
+import {TagInfo} from "../../models/TagInfo";
+import {CategoriesPage} from "../categories/categories";
+import {CategoriesInfo} from "../../models/CategoriesInfo";
 
 /**
  * Generated class for the ChannelsPage page.
@@ -19,9 +23,23 @@ import {Mediafile} from "../../models/Mediafile";
 export class ChannelsPage {
 
   channelInfo:ChannelInfo;
+  paramsForCategories: CategoriesInfo;
+  shownTags: TagInfo[] = [];
 
   filedata: any;
-  mediafiles: Mediafile[];
+  mediafiles: Mediafile[] =[];
+  avatarImages: Mediafile[] = [];
+  face: Mediafile = {
+    file_id: 0,
+  filename: '',
+  filesize: 0,
+  title: '',
+  description: '',
+  user_id: 0,
+  media_type: '',
+  mime_type: '',
+  time_added: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public mediaProvider: MediaProvider) {
@@ -40,13 +58,17 @@ export class ChannelsPage {
         console.log(response);
         if(response !== null && response !== undefined){
           this.mediafiles = response;
-          for (let i; i<this.mediafiles.length;++i){
-
-          }
         }
       });
 
+  }
 
+  goToCategories(fileId:number){
+    console.log('file-id: '+fileId);
+    this.paramsForCategories = {
+      "file_id": fileId
+    };
+    this.navCtrl.push(CategoriesPage,this.paramsForCategories);
   }
 
 }

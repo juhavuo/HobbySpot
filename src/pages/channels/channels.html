@@ -12,8 +12,8 @@
 
 <ion-content padding>
   <h1>{{channelInfo.channel_name}}</h1>
-  <ul>
-    <li *ngFor = "let mediafile of mediafiles">
+  <ul *ngFor = "let mediafile of mediafiles" >
+    <li (click) = "goToCategories(mediafile.file_id)">
       <h3>{{mediafile.title}}</h3>
     </li>
   </ul>

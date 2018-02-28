@@ -11,6 +11,7 @@ import { MediaProvider } from '../providers/media/media';
 import {HttpClientModule} from "@angular/common/http";
 import {ThumbnailPipe} from "../pipes/thumbnail/thumbnail";
 import {LoginPage} from "../pages/login/login";
+import {CategoriesPage} from "../pages/categories/categories";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {LoginPage} from "../pages/login/login";
     HomePage,
     ChannelsPage,
     LoginPage,
+    CategoriesPage,
     ThumbnailPipe
   ],
   imports: [
@@ -30,6 +32,7 @@ import {LoginPage} from "../pages/login/login";
     MyApp,
     HomePage,
     ChannelsPage,
+    CategoriesPage,
     LoginPage
   ],
   providers: [

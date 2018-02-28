@@ -6,10 +6,10 @@
     <ion-card-content>
       <ion-list no-line>
         <ion-item>
-          <ion-input type="text" placeholder="Username"></ion-input>
+          <ion-input type="text" placeholder="Username"[(ngModel)] = "mediaProvider.username" ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="password" placeholder="Password"></ion-input>
+          <ion-input type="password" placeholder="Password" [ngModel] ="mediaProvider.password"></ion-input>
         </ion-item>
       </ion-list>
       <button type="submit" (click) = "login()">Login</button>
