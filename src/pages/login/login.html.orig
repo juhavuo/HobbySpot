@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+<<<<<<< HEAD
+      Login
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-line>
+        <ion-item>
+          <ion-input type="text" placeholder="Username"[(ngModel)] = "mediaProvider.username" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" placeholder="Password" [ngModel] ="mediaProvider.password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button type="submit" (click) = "login()">Login</button>
+=======
+      <h1>Login</h1>
+    </ion-card-header>
+    <ion-card-content>
+<ion-list no-line>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="username" placeholder="Username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+  </ion-item>
+      <button (click)="login()" type="submit">Login</button>
+</ion-list>
+
+      <button (click)="home()"> Cancel </button>
+>>>>>>> 9b2873b15dde8b9fac5521427759f01d81121ba5
+    </ion-card-content>
+  </ion-card>
+</ion-content>

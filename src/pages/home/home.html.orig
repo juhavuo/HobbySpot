@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-nav #mycontent [root]="rootPage"></ion-nav>
+  <ion-navbar>
+<<<<<<< HEAD
+    <button ion-button menuToggle>Toggle Menu</button>
+=======
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+>>>>>>> 9b2873b15dde8b9fac5521427759f01d81121ba5
+    <ion-title>
+      HobbySpot
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-menu [content]="mycontent">
+  <ion-content>
+
+    <ion-list>
+      <ion-searchbar
+        [(ngModel)]="myInput"
+        [showCancelButton]="shouldShowCancel"
+        (ionInput)="onInput($event)"
+        (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+<<<<<<< HEAD
+      <p> Recent tables </p>
+      <ion-navbar>
+        <button (click)="login()"> Log in </button>
+        <button (click)="logout()"> Log out </button>
+        <button (click)="register()"> register </button>
+        <button (click)="upload()"> Upload </button>
+
+=======
+
+      <p> Recent tables </p>
+      <ion-navbar>
+        <button (click)="login()"> Log in </button>
+        <button (click)="register()"> Register </button>
+        <button (click)="upload()"> Upload </button>
+        <button (click)="logout()"> Log out </button>
+>>>>>>> 9b2873b15dde8b9fac5521427759f01d81121ba5
+      </ion-navbar>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-content padding>
+  <h1>Channels</h1>
+  <ul *ngFor = "let channel of channels">
+    <li (click) = goToChannel(channel) >
+        {{channel}}
+    </li>
+  </ul>
+</ion-content>
