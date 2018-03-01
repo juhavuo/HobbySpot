@@ -7,6 +7,7 @@ import {Mediafile} from "../../models/Mediafile";
 import {TagInfo} from "../../models/TagInfo";
 import {LoginPage} from '../login/login';
 import {RegisterPage} from '../register/register';
+import {UploadPage} from '../upload/upload';
 
 @Component({
   selector: 'page-home',
@@ -52,6 +53,10 @@ export class HomePage {
 
   register(){
     this.navCtrl.setRoot(RegisterPage);
+  }
+
+  upload(){
+    this.navCtrl.setRoot(UploadPage);
   }
 
   logout(){

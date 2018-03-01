@@ -1,8 +1,9 @@
 <ion-header>
+  <ion-toolbar>
   <ion-nav #mycontent [root]="rootPage"></ion-nav>
   <ion-navbar>
 
-    <button ion-button menuToggle>
+    <button class="hamburger" ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
 
@@ -10,6 +11,7 @@
       HobbySpot
     </ion-title>
   </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-menu [content]="mycontent">
