@@ -5,7 +5,7 @@ import {MediaProvider} from "../../providers/media/media";
 import {ChannelInfo} from "../../models/ChannelInfo";
 import {Mediafile} from "../../models/Mediafile";
 import {TagInfo} from "../../models/TagInfo";
-import {LoginPage} from "../login/login";
+import {RegisterPage} from '../register/register';
 
 @Component({
   selector: 'page-home',
@@ -40,25 +40,33 @@ export class HomePage {
         });
       }
     });
-
-
-
-
   }
+
+  login(){
+    if (localStorage.getItem('token') !==null){
+    }else {
+      this.navCtrl.push(LoginPage);
+    }
+  }
+
+  register(){
+    this.navCtrl.setRoot(RegisterPage);
+  }
+
+  logout(){
+    if (localStorage.removeItem('token') !== null){
+      this.navCtrl.setRoot(LoginPage);
+    } else {
+      console.log('First log in to log out');
+    }
+  }
+
 
   goToChannel(channelname:string){
     this.paramsForChannel = {
       "channel_name":channelname
     };
     this.navCtrl.push(ChannelsPage,this.paramsForChannel);
-  }
-
-  login(){
-    if (localStorage.getItem('token') !==null){
-
-    }else {
-      this.navCtrl.push(LoginPage);
-    }
   }
 
   openMenu() {

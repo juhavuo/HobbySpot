@@ -12,6 +12,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {ThumbnailPipe} from "../pipes/thumbnail/thumbnail";
 import {LoginPage} from "../pages/login/login";
 import {CategoriesPage} from "../pages/categories/categories";
+import {RegisterPage} from '../pages/register/register';
+import {UploadPage} from '../pages/upload/upload';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import {CategoriesPage} from "../pages/categories/categories";
     ChannelsPage,
     LoginPage,
     CategoriesPage,
-    ThumbnailPipe
+    ThumbnailPipe,
+    RegisterPage,
+    UploadPage
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,8 @@ import {CategoriesPage} from "../pages/categories/categories";
     ChannelsPage,
     CategoriesPage,
     LoginPage
+    RegisterPage,
+    UploadPage
   ],
   providers: [
     StatusBar,
