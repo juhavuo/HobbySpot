@@ -1,13 +1,17 @@
 <ion-header>
+  <ion-toolbar>
   <ion-nav #mycontent [root]="rootPage"></ion-nav>
   <ion-navbar>
 
-    <button ion-button menuToggle>Toggle Menu</button>
+    <button class="hamburger" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
 
     <ion-title>
       HobbySpot
     </ion-title>
   </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 <ion-menu [content]="mycontent">
   <ion-content>
@@ -19,7 +23,6 @@
         (ionInput)="onInput($event)"
         (ionCancel)="onCancel($event)">
       </ion-searchbar>
-<<<<<<< HEAD
       <p> Recent tables </p>
       <ion-navbar>
         <button (click)="login()"> Log in </button>
