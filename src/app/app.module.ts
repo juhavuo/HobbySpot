@@ -38,7 +38,7 @@ import {UploadPage} from '../pages/upload/upload';
     HomePage,
     ChannelsPage,
     CategoriesPage,
-    LoginPage
+    LoginPage,
     RegisterPage,
     UploadPage
   ],
