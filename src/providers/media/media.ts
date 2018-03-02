@@ -33,9 +33,8 @@ export class MediaProvider {
   public getUserInfo(userId:number){
     return this.http.get(this.apiUrl+'/users/'+userId,this.settingsX);
   }
-  }
+  
 
-=======
   public login() {
     console.log('username: ' + this.username);
     console.log('password: ' + this.password);
