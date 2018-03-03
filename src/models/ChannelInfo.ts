@@ -1,3 +1,4 @@
 export class ChannelInfo{
-  channel_name: string;
+  channel_tag: string;
+  category_tags?: string[];
 }

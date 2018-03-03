@@ -31,9 +31,12 @@ export class MediaProvider {
   }
 
   public getUserInfo(userId:number){
-    return this.http.get(this.apiUrl+'/users/'+userId,this.settingsX);
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+    };
+    return this.http.get(this.apiUrl+'/users/'+userId,settings);
   }
-  
+
 
   public login() {
     console.log('username: ' + this.username);
@@ -59,7 +62,7 @@ export class MediaProvider {
     });
   }
 
-  getUserData() {
+  public getUserData() {
     const settings = {
       headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
     };
@@ -80,5 +83,9 @@ export class MediaProvider {
     };
     console.log("uploading image");
     return this.http.post(this.apiUrl + '/media', formData, settings);
+  }
+
+  public getCommentsByFileId(fileId:number){
+    return this.http.get(this.apiUrl+'/comments/file/'+fileId);
   }
 }

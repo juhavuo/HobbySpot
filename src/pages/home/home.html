@@ -28,7 +28,7 @@
         <button (click)="login()"> Log in </button>
         <button (click)="logout()"> Log out </button>
         <button (click)="register()"> register </button>
-        <button (click)="upload()"> Upload </button>        	
+        <button (click)="upload()"> Upload </button>
       </ion-navbar>
     </ion-list>
   </ion-content>
@@ -37,9 +37,9 @@
 
 <ion-content padding>
   <h1>Channels</h1>
-  <ul *ngFor = "let channel of channels">
-    <li (click) = goToChannel(channel) >
-        {{channel}}
+  <ul *ngFor = "let chinfo of channelInfos">
+    <li (click) = goToChannel(chinfo) >
+      {{chinfo.channel_tag}}
     </li>
   </ul>
 </ion-content>

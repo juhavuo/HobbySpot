@@ -24,7 +24,8 @@ export class ChannelsPage {
 
   channelInfo:ChannelInfo;
   paramsForCategories: CategoriesInfo;
-  shownTags: TagInfo[] = [];
+  categoryTags: string[] = [];
+  shownTags: string[] = [];
 
   filedata: any;
   mediafiles: Mediafile[] =[];
@@ -46,27 +47,21 @@ export class ChannelsPage {
     this.navParams.get('paramsForChannel');
     this.channelInfo = this.navParams.data;
     console.log(this.channelInfo);
+    for(let i = 0; i < this.channelInfo.category_tags.length;++i){
+      
+    }
+
   }
 
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChannelsPage');
-
-    this.mediaProvider.getAllMediaWithTag(this.channelInfo.channel_name)
-      .subscribe((response:Mediafile[]) => {
-        console.log(response);
-        if(response !== null && response !== undefined){
-          this.mediafiles = response;
-        }
-      });
-
   }
 
-  goToCategories(fileId:number){
-    console.log('file-id: '+fileId);
+  goToCategories(passedTag: string){
     this.paramsForCategories = {
-      "file_id": fileId
+      "tag_name": passedTag
     };
     this.navCtrl.push(CategoriesPage,this.paramsForCategories);
   }

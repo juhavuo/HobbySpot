@@ -11,10 +11,10 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>{{channelInfo.channel_name}}</h1>
-  <ul *ngFor = "let mediafile of mediafiles" >
-    <li (click) = "goToCategories(mediafile.file_id)">
-      <h3>{{mediafile.title}}</h3>
+  <h1>{{channelInfo.channel_tag}}</h1>
+  <ul *ngFor = "let category of channelInfo.category_tags">
+    <li (click) = "goToCategories(category)">
+      <p>{{category}}</p>
     </li>
   </ul>
 </ion-content>
