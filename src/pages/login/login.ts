@@ -3,9 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from '../home/home';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {MediaProvider} from '../../providers/media/media';
-
-
-
+import {LoadingController} from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -30,14 +28,25 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public httpClient: HttpClient,
-              public mediaProvider: MediaProvider) {
+              public mediaProvider: MediaProvider,
+              public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  cancel(){
+    let loader = this.loadingCtrl.create({
+      content: "Cancelling...",
+      duration: 100
+    });
+    loader.present();
+    this.navCtrl.setRoot(HomePage);
+  }
+
   public login(){
+
     console.log('username: ' + this.username);
     console.log('password: ' + this.password);
     console.log('email: ' + this.email);
@@ -56,15 +65,22 @@ export class LoginPage {
       subscribe(response => {
         console.log(response['token']);
         localStorage.setItem('token', response['token']);
+        let loader = this.loadingCtrl.create({
+          content: "Logging in...",
+          duration: 1500
+        });
+        loader.present();
         this.navCtrl.setRoot(HomePage);
       }, (error: HttpErrorResponse) => {
         console.log(error.error.message);
         this.status = error.error.message;
+        let loader = this.loadingCtrl.create({
+          content: "Your username or password is incorrect",
+          duration: 1500
+        });
+        loader.present();
+        console.log('Username or password is incorrect');
+        this.navCtrl.setRoot(LoginPage);
       });
-
-  }
-
-  public home(){
-    this.navCtrl.setRoot(HomePage);
   }
 }

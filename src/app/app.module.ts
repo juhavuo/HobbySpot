@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {ChannelsPage} from "../pages/channels/channels";
@@ -13,6 +12,9 @@ import {ThumbnailPipe} from "../pipes/thumbnail/thumbnail";
 import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {UploadPage} from '../pages/upload/upload';
+import {AboutPage} from '../pages/about/about';
+import {ContactPage} from '../pages/contact/contact';
+import {TabsPage} from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import {UploadPage} from '../pages/upload/upload';
     LoginPage,
     RegisterPage,
     UploadPage,
+    AboutPage,
+    ContactPage,
+    TabsPage,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,9 @@ import {UploadPage} from '../pages/upload/upload';
     LoginPage,
     RegisterPage,
     UploadPage,
+    AboutPage,
+    ContactPage,
+    TabsPage,
   ],
   providers: [
     StatusBar,
