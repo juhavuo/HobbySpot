@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MenuController, NavController} from 'ionic-angular';
+import {LoadingController, NavController} from 'ionic-angular';
 import {ChannelsPage} from "../channels/channels";
 import {MediaProvider} from "../../providers/media/media";
 import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";
@@ -9,6 +9,7 @@ import {RegisterPage} from '../register/register';
 import {UploadPage} from '../upload/upload';
 import {LoginPage} from "../login/login";
 import {TabsPage} from '../tabs/tabs';
+import {LogoutPage} from '../logout/logout';
 
 @Component({
   selector: 'page-home',
@@ -25,7 +26,8 @@ export class HomePage {
   mainTag = 'HobbySpotTest';
 
   constructor(public navCtrl: NavController,
-              public mediaProvider: MediaProvider){
+              public mediaProvider: MediaProvider,
+              public loadingCtrl: LoadingController){
   }
 
 
@@ -65,14 +67,27 @@ export class HomePage {
   }
 
   upload(){
-    this.navCtrl.setRoot(UploadPage);
+    if (localStorage.getItem('token') !==null){
+      console.log('Upload page');
+      let loader = this.loadingCtrl.create({
+        content: "Please wait...",
+        duration: 1500
+      });
+      loader.present();
+      this.navCtrl.setRoot(UploadPage);
+    }
   }
 
   logout(){
-    if (localStorage.removeItem('token') !== null){
-      this.navCtrl.setRoot(LoginPage);
-      console.log('First log in to log out');
-    } else {
+    if (localStorage.getItem('token') !== null){
+      localStorage.removeItem('token');
+      console.log('logging out');
+      let loader = this.loadingCtrl.create({
+        content: "Logging out",
+        duration: 1500
+      });
+      loader.present();
+      this.navCtrl.setRoot(LogoutPage);
     }
   }
 

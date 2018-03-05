@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  IonicPage, LoadingController, NavController,
+  NavParams,
+} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../app/media';
 import {HomePage} from '../home/home';
+import {LoginPage} from '../login/login';
 
 /**
  * Generated class for the UploadPage page.
@@ -26,7 +30,8 @@ export class UploadPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public mediaProvider: MediaProvider) {
+              public mediaProvider: MediaProvider,
+              public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -36,7 +41,15 @@ export class UploadPage {
   setFile(evt) {
     console.log(evt.target.files[0]);
     this.file = evt.target.files[0];
+  }
 
+  public cancel(){
+    let loader = this.loadingCtrl.create({
+      content: "Cancelling...",
+      duration: 100
+    });
+    loader.present();
+    this.navCtrl.setRoot(HomePage);
   }
 
   public upload() {
@@ -49,13 +62,9 @@ export class UploadPage {
 
     this.mediaProvider.upload(formData).subscribe(data => {
       console.log(data);
+        this.navCtrl.setRoot(UploadPage);
     }, (e: HttpErrorResponse) => {
       console.log(e);
     });
   }
-
-  public home(){
-    this.navCtrl.setRoot(HomePage);
-  }
-
 }

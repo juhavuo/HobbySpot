@@ -9,6 +9,7 @@ export class MediaProvider {
   username: string;
   password: string;
   email: string;
+  isLoggedIn = false;
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl ='http://media.mw.metropolia.fi/wbma/uploads/';

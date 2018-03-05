@@ -16,6 +16,7 @@ import {UploadPage} from '../pages/upload/upload';
 import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
+import {LogoutPage} from '../pages/logout/logout';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {TabsPage} from '../pages/tabs/tabs';
     AboutPage,
     ContactPage,
     TabsPage,
-    UploadPage
+    UploadPage,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import {TabsPage} from '../pages/tabs/tabs';
     AboutPage,
     ContactPage,
     TabsPage,
-    UploadPage
+    UploadPage,
+    LogoutPage
   ],
   providers: [
     StatusBar,
