@@ -11,6 +11,7 @@ export class MediaProvider {
   username: string;
   password: string;
   email: string;
+  isLoggedIn = false;
 
   constructor(public http: HttpClient) {
     console.log('Hello MediaProvider Provider');

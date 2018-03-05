@@ -5,12 +5,6 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {MediaProvider} from '../../providers/media/media';
 import {LoadingController} from 'ionic-angular';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -71,6 +65,7 @@ export class LoginPage {
         });
         loader.present();
         this.navCtrl.setRoot(HomePage);
+        this.mediaProvider.isLoggedIn = true;
       }, (error: HttpErrorResponse) => {
         console.log(error.error.message);
         this.status = error.error.message;
