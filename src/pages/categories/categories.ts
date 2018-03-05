@@ -27,7 +27,9 @@ export class CategoriesPage {
   usedCInfo: ForwardedTaginformation[];
   tagInfos: TagInfo[];
   category_tag: string;
+  additionalTags: string[];
   requestedFiles: FileRequest[] = [];
+  reqFile: FileRequest;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public mediaProvider: MediaProvider) {
@@ -45,8 +47,15 @@ export class CategoriesPage {
         if(this.tagInfos[2].tag === this.category_tag){
           console.log(this.tagInfos);
           this.mediaProvider.requestMedia(this.tagInfos[2].file_id).subscribe((filereq: FileRequest) =>{
-            this.requestedFiles.push(filereq);
-            });
+            this.additionalTags = [];
+            for (let j = 3; j < this.categoriesInfo[i].taginfo.length; ++j){
+              this.additionalTags.push(this.categoriesInfo[i].taginfo[j].tag);
+            }
+            this.reqFile = filereq;
+            this.reqFile.tags = this.additionalTags;
+            this.requestedFiles.push(this.reqFile);
+          });
+
         }
       }
     }

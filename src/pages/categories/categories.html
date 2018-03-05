@@ -18,6 +18,9 @@
     <li>
       <h1>{{reqf.title}}</h1>
       <img [src]="mediaProvider.mediaUrl+reqf.filename">
+      <ul *ngFor = "let tag of reqf.tags">
+        <li>{{tag}}</li>
+      </ul>
     </li>
   </ul>
 </ion-content>

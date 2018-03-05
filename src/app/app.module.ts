@@ -29,7 +29,8 @@ import {TabsPage} from '../pages/tabs/tabs';
     RegisterPage,
     AboutPage,
     ContactPage,
-    TabsPage
+    TabsPage,
+    UploadPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,8 @@ import {TabsPage} from '../pages/tabs/tabs';
     UploadPage,
     AboutPage,
     ContactPage,
-    TabsPage
+    TabsPage,
+    UploadPage
   ],
   providers: [
     StatusBar,

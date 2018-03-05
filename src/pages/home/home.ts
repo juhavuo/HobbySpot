@@ -86,19 +86,5 @@ export class HomePage {
     this.navCtrl.push(ChannelsPage,this.paramsForChannel);
   }
 
-  openMenu() {
-    this.menuCtrl.open();
-  }
-
-  closeMenu() {
-    this.menuCtrl.close();
-  }
-
-  toggleMenu() {
-    this.menuCtrl.toggle();
-  }
-
-
-
 }
 

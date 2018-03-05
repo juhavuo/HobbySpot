@@ -3,37 +3,38 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {ChannelsPage} from "../pages/channels/channels";
 import { MediaProvider } from '../providers/media/media';
 import {HttpClientModule} from "@angular/common/http";
 import {ThumbnailPipe} from "../pipes/thumbnail/thumbnail";
-<<<<<<< HEAD
 import {LoginPage} from "../pages/login/login";
 import {CategoriesPage} from "../pages/categories/categories";
-=======
-import {LoginPage} from '../pages/login/login';
 import {RegisterPage} from '../pages/register/register';
 import {UploadPage} from '../pages/upload/upload';
->>>>>>> 9b2873b15dde8b9fac5521427759f01d81121ba5
+import {AboutPage} from '../pages/about/about';
+import {ContactPage} from '../pages/contact/contact';
+import {TabsPage} from '../pages/tabs/tabs';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ChannelsPage,
-<<<<<<< HEAD
     LoginPage,
     CategoriesPage,
-    ThumbnailPipe
-=======
     ThumbnailPipe,
-    LoginPage,
     RegisterPage,
+<<<<<<< HEAD
+    UploadPage
+=======
     UploadPage,
->>>>>>> 9b2873b15dde8b9fac5521427759f01d81121ba5
+    AboutPage,
+    ContactPage,
+    TabsPage,
+>>>>>>> kendynbranch
   ],
   imports: [
     BrowserModule,
@@ -45,14 +46,17 @@ import {UploadPage} from '../pages/upload/upload';
     MyApp,
     HomePage,
     ChannelsPage,
-<<<<<<< HEAD
     CategoriesPage,
-    LoginPage
-=======
     LoginPage,
     RegisterPage,
+<<<<<<< HEAD
+    UploadPage
+=======
     UploadPage,
->>>>>>> 9b2873b15dde8b9fac5521427759f01d81121ba5
+    AboutPage,
+    ContactPage,
+    TabsPage,
+>>>>>>> kendynbranch
   ],
   providers: [
     StatusBar,

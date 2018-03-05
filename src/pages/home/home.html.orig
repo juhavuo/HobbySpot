@@ -1,15 +1,11 @@
 <ion-header>
   <ion-toolbar>
-  <ion-nav #mycontent [root]="rootPage"></ion-nav>
+  <ion-nav #content [root]="rootPage"></ion-nav>
   <ion-navbar>
 
-<<<<<<< HEAD
-    <button ion-button menuToggle>Toggle Menu</button>
-=======
     <button class="hamburger" ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
->>>>>>> fd07ba29ce5cfdd0cf8055ae79cb84e9076e0b2e
 
     <ion-title>
       HobbySpot
@@ -17,9 +13,20 @@
   </ion-navbar>
   </ion-toolbar>
 </ion-header>
+<<<<<<< HEAD
 <ion-menu [content]="mycontent">
   <ion-content>
+=======
 
+<ion-menu [content]="content">
+  <ion-header class="menuHeader">
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+>>>>>>> kendynbranch
+
+  <ion-content>
     <ion-list>
       <ion-searchbar
         [(ngModel)]="myInput"
@@ -33,18 +40,27 @@
         <button (click)="login()"> Log in </button>
         <button (click)="logout()"> Log out </button>
         <button (click)="register()"> register </button>
-        <button (click)="upload()"> Upload </button>        	
+        <button (click)="upload()"> Upload </button>
       </ion-navbar>
+=======
+
+      <h5> Recent tables </h5>
+        <button ion-item (click)="login()"> Log in </button><br>
+        <button ion-item (click)="register()"> Register </button><br>
+        <button ion-item (click)="upload()"> Upload </button><br>
+        <button ion-item (click)="logout()"> Log out </button><br>
+>>>>>>> kendynbranch
     </ion-list>
   </ion-content>
-
 </ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
 
 <ion-content padding>
   <h1>Channels</h1>
-  <ul *ngFor = "let channel of channels">
-    <li (click) = goToChannel(channel) >
-        {{channel}}
+  <ul *ngFor = "let channeltag of channeltags">
+    <li (click) = goToChannel(channeltag) >
+      {{channeltag}}
     </li>
   </ul>
 </ion-content>
