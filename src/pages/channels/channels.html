@@ -11,10 +11,9 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>{{channelInfo.channel_tag}}</h1>
-  <ul *ngFor = "let category of channelInfo.category_tags">
-    <li (click) = "goToCategories(category)">
-      <p>{{category}}</p>
+  <ul *ngFor = "let ctag of categorytags">
+    <li (click) = "goToCategories(ctag)">
+      <p>{{ctag}}</p>
     </li>
   </ul>
 </ion-content>

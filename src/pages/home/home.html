@@ -37,9 +37,9 @@
 
 <ion-content padding>
   <h1>Channels</h1>
-  <ul *ngFor = "let chinfo of channelInfos">
-    <li (click) = goToChannel(chinfo) >
-      {{chinfo.channel_tag}}
+  <ul *ngFor = "let channeltag of channeltags">
+    <li (click) = goToChannel(channeltag) >
+      {{channeltag}}
     </li>
   </ul>
 </ion-content>

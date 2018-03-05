@@ -88,4 +88,8 @@ export class MediaProvider {
   public getCommentsByFileId(fileId:number){
     return this.http.get(this.apiUrl+'/comments/file/'+fileId);
   }
+
+  public requestMedia(fileId: number){
+    return this.http.get(this.apiUrl+'/media/'+fileId);
+  }
 }

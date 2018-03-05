@@ -1,3 +1,9 @@
+import {Mediafile} from "./Mediafile";
+
 export class CategoriesInfo{
-  tag_name: string;
+  category_tag:string;
+  files?: [{
+    file_id: number;
+    tags_attached?: string[];
+  }]
 }

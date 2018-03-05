@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ChannelInfo} from "../../models/ChannelInfo";
+import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";
 import {MediaProvider} from "../../providers/media/media";
 import {Mediafile} from "../../models/Mediafile";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -22,10 +22,13 @@ import {CategoriesInfo} from "../../models/CategoriesInfo";
 })
 export class ChannelsPage {
 
-  channelInfo:ChannelInfo;
-  paramsForCategories: CategoriesInfo;
-  categoryTags: string[] = [];
-  shownTags: string[] = [];
+  data:any;
+  channelInfos:ForwardedTaginformation[];
+  paramsForCategories: any;
+  ftagInformation: ForwardedTaginformation[] = [];
+  channel_tag:string;
+  categorytags: string[] =[];
+  tagInfos: TagInfo[];
 
   filedata: any;
   mediafiles: Mediafile[] =[];
@@ -45,24 +48,40 @@ export class ChannelsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public mediaProvider: MediaProvider) {
     this.navParams.get('paramsForChannel');
-    this.channelInfo = this.navParams.data;
-    console.log(this.channelInfo);
-    for(let i = 0; i < this.channelInfo.category_tags.length;++i){
-      
-    }
+    this.data = this.navParams.data;
+    this.channelInfos = this.data.channel_infos;
+    this.channel_tag = this.data.chtag;
+    console.log(this.channel_tag);
 
   }
-
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChannelsPage');
+
+    for(let i = 0; i<this.channelInfos.length;++i){
+      this.tagInfos = this.channelInfos[i].taginfo;
+      if(this.tagInfos.length>2){
+        if(this.tagInfos[1].tag === this.channel_tag){
+          console.log(this.tagInfos);
+          this.ftagInformation.push({
+            taginfo: this.tagInfos
+          });
+          let categorytagindex = this.categorytags.indexOf(this.tagInfos[2].tag);
+          if(categorytagindex<0){
+            this.categorytags.push(this.tagInfos[2].tag);
+          }
+        }
+      }
+    }
   }
 
-  goToCategories(passedTag: string){
+  goToCategories(categoryTag:string){
+
     this.paramsForCategories = {
-      "tag_name": passedTag
+      catag: categoryTag,
+      category_infos: this.ftagInformation
     };
+
     this.navCtrl.push(CategoriesPage,this.paramsForCategories);
   }
 

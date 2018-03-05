@@ -13,5 +13,11 @@
 </ion-header>
 
 <ion-content padding>
-    {{categoriesInfo.tag_name}}
+  <p>{{categoriesInfo.category_tag}}</p>
+  <ul *ngFor = "let reqf of requestedFiles">
+    <li>
+      <h1>{{reqf.title}}</h1>
+      <img [src]="mediaProvider.mediaUrl+reqf.filename">
+    </li>
+  </ul>
 </ion-content>
