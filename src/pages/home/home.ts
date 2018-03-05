@@ -8,6 +8,7 @@ import {TagInfo} from "../../models/TagInfo";
 import {RegisterPage} from '../register/register';
 import {UploadPage} from '../upload/upload';
 import {LoginPage} from "../login/login";
+import {TabsPage} from '../tabs/tabs';
 
 @Component({
   selector: 'page-home',
@@ -21,11 +22,10 @@ export class HomePage {
   channelInfos: ForwardedTaginformation[] = [];
 
   paramsForChannel: any;
-
   mainTag = 'HobbySpotTest';
 
-  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menuCtrl: MenuController){
-
+  constructor(public navCtrl: NavController,
+              public mediaProvider: MediaProvider){
   }
 
 
@@ -34,7 +34,6 @@ export class HomePage {
       this.mediafiles=res;
       console.log(this.mediafiles.length);
       for(let i = 0; i < this.mediafiles.length;++i){
-
         this.mediaProvider.showTagsByFile(this.mediafiles[i].file_id).subscribe((res2: TagInfo[]) => {
           this.tagInfo = res2;
           if(this.tagInfo.length>1){
@@ -55,6 +54,7 @@ export class HomePage {
 
   login(){
     if (localStorage.getItem('token') !==null){
+      console.log('You are already logged in');
     }else {
       this.navCtrl.push(LoginPage);
     }
@@ -71,8 +71,8 @@ export class HomePage {
   logout(){
     if (localStorage.removeItem('token') !== null){
       this.navCtrl.setRoot(LoginPage);
-    } else {
       console.log('First log in to log out');
+    } else {
     }
   }
 
