@@ -3,7 +3,7 @@
   <ion-nav #content [root]="rootPage"></ion-nav>
   <ion-navbar>
 
-    <button class="hamburger" ion-button menuToggle="test">
+    <button class="hamburger" ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
 
@@ -16,7 +16,7 @@
 </ion-header>
 
 
-<ion-menu [content]="content" persistent=“true” id="test">
+<ion-menu [content]="content" persistent=“true”>
   <ion-header class="menuHeader">
     <ion-toolbar>
       <ion-title>Menu</ion-title>
@@ -25,7 +25,7 @@
 
   <ion-content>
     <ion-list>
-      <ion-searchbar
+      <ion-searchbar class="searchbar"
         [(ngModel)]="myInput"
         [showCancelButton]="shouldShowCancel"
         (ionInput)="onInput($event)"
@@ -35,15 +35,15 @@
 
       <!-- When user is not logged in -->
       <div *ngIf="!this.mediaProvider.isLoggedIn">
-        <button ion-item (click)="login()"> Log in </button><br>
-        <button ion-item (click)="register()"> Register </button><br>
+        <button no-lines class="login" ion-item (click)="login()"> Log in </button>
+        <button no-lines class="register" ion-item (click)="register()"> Register </button>
       </div>
 
       <!-- When user is logged -->
       <div *ngIf="this.mediaProvider.isLoggedIn">
         <h5> Recent tables </h5>
-        <button ion-item (click)="upload()"> Upload </button><br>
-        <button ion-item (click)="logout()"> Log out </button><br>
+        <button no-lines class="upload" ion-item (click)="upload()"> Upload </button>
+        <button no-lines class="logout" ion-item (click)="logout()"> Log out </button>
       </div>
 
     </ion-list>
@@ -59,4 +59,13 @@
         {{channel}}
     </li>
   </ul>
+
+  <!-- When user is logged in, he can see add button -->
+  <div *ngIf="this.mediaProvider.isLoggedIn">
+    <button no-lines class="addButton" ion-item (click)="upload()">
+      <ion-icon icon-only name="add-circle"></ion-icon>
+    </button>
+  </div>
+
+
 </ion-content>

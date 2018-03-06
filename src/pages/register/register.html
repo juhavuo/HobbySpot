@@ -14,10 +14,9 @@
         <ion-item>
           <ion-input type="email" [(ngModel)]="user.email" placeholder="Email"></ion-input>
         </ion-item>
-        <button (click)="register()" type="submit">Sign up</button>
+        <button ion-button (click)="register()" [round]="true" type="submit">Sign up</button>
+        <button ion-button (click)="home()" [round]="true"> Cancel </button>
       </ion-list>
-
-      <button (click)="home()"> Cancel </button>
     </ion-card-content>
   </ion-card>
 </ion-content>
