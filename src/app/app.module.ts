@@ -16,6 +16,7 @@ import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
 import {LogoutPage} from '../pages/logout/logout';
+import {Camera} from '@ionic-native/camera';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {LogoutPage} from '../pages/logout/logout';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MediaProvider,
     ThumbnailPipe,
+    Camera
   ]
 })
 export class AppModule {}

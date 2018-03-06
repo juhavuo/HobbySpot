@@ -8,6 +8,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Media} from '../../app/media';
 import {HomePage} from '../home/home';
 import {LoginPage} from '../login/login';
+import {Camera, CameraOptions} from '@ionic-native/camera';
 
 
 
@@ -17,16 +18,22 @@ import {LoginPage} from '../login/login';
   templateUrl: 'upload.html',
 })
 export class UploadPage {
+  imageURL
+  canvas: any;
+  imageData: string;
+
   file: File;
   media: Media = {
     title: '',
     description: '',
   };
 
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public mediaProvider: MediaProvider,
-              public loadingCtrl: LoadingController,) {
+              public loadingCtrl: LoadingController,
+              private camera: Camera) {
   }
 
   ionViewDidLoad() {
@@ -40,8 +47,8 @@ export class UploadPage {
 
   public cancel(){
     let loader = this.loadingCtrl.create({
-      content: "Cancelling...",
-      duration: 100
+      content: 'Cancelling...',
+      duration: 100,
     });
     loader.present();
     this.navCtrl.setRoot(HomePage);
@@ -63,4 +70,24 @@ export class UploadPage {
     });
   }
 
+  captureImage() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      //let base64Image = 'data:image/jpeg;base64,' + imageData;
+
+      this.imageURL = imageData
+
+
+    }, (err) => {
+      // Handle error
+    });
+
+  }
 }
