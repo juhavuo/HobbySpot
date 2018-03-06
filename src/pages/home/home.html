@@ -50,9 +50,9 @@
 
 <ion-content padding>
   <h1>Channels</h1>
-  <ul *ngFor = "let channeltag of channeltags">
-    <li (click) = goToChannel(channeltag) >
+  <ion-list *ngFor = "let channeltag of channeltags">
+    <ion-label (click) = goToChannel(channeltag) >
       {{channeltag}}
-    </li>
-  </ul>
+    </ion-label>
+  </ion-list>
 </ion-content>

@@ -7,6 +7,8 @@ import {MediaProvider} from "../../providers/media/media";
 import {Mediafile} from "../../models/Mediafile";
 import {TagInfo} from "../../models/TagInfo";
 import {FileRequest} from "../../models/FileRequest";
+import {ChatPage} from "../chat/chat";
+import {LoginPage} from "../login/login";
 
 /**
  * Generated class for the CategoriesPage page.
@@ -30,6 +32,7 @@ export class CategoriesPage {
   additionalTags: string[];
   requestedFiles: FileRequest[] = [];
   reqFile: FileRequest;
+  paramsForChat: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public mediaProvider: MediaProvider) {
@@ -60,6 +63,17 @@ export class CategoriesPage {
       }
     }
     console.log(this.requestedFiles);
+  }
+
+  goToChat(reqFile: FileRequest){
+    this.paramsForChat = {
+      filerequest: reqFile
+    }
+    if (localStorage.getItem('token') !== null) {
+      this.navCtrl.push(ChatPage, this.paramsForChat);
+    }else{
+      this.navCtrl.push(LoginPage);
+    }
   }
 
 }

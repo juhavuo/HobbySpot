@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {FileRequest} from "../../models/FileRequest";
 
 /**
  * Generated class for the ChatPage page.
@@ -15,7 +16,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChatPage {
 
+  data: any;
+  reqfile: FileRequest = {
+    file_id: 0,
+    user_id: 0,
+    filename: '',
+    title: '',
+    description: '',
+    media_type: '',
+    mime_type: '',
+    time_added: ''
+  };
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.navParams.get('paramsForChat');
+    this.data = this.navParams.data;
+    this.reqfile = this.data.filerequest;
   }
 
   ionViewDidLoad() {

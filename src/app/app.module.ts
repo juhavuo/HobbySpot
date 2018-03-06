@@ -17,6 +17,7 @@ import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
 import {LogoutPage} from '../pages/logout/logout';
+import {ChatPage} from "../pages/chat/chat";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {LogoutPage} from '../pages/logout/logout';
     ContactPage,
     TabsPage,
     UploadPage,
-    LogoutPage
+    LogoutPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {LogoutPage} from '../pages/logout/logout';
     ContactPage,
     TabsPage,
     UploadPage,
-    LogoutPage
+    LogoutPage,
+    ChatPage
   ],
   providers: [
     StatusBar,

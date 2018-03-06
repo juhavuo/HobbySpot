@@ -1,5 +1,5 @@
 export class FileRequest{
-  file: Object;
+  file?: Object;
   file_id: number;
   user_id: number;
   filename: string;

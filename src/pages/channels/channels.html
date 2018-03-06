@@ -11,9 +11,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ul *ngFor = "let ctag of categorytags">
-    <li (click) = "goToCategories(ctag)">
-      <p>{{ctag}}</p>
-    </li>
-  </ul>
+  <ion-list *ngFor = "let ctag of categorytags">
+    <ion-item (click) = "goToCategories(ctag)">
+      {{ctag}}
+    </ion-item>
+  </ion-list>
 </ion-content>

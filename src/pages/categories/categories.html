@@ -14,13 +14,14 @@
 
 <ion-content padding>
   <p>{{categoriesInfo.category_tag}}</p>
-  <ul *ngFor = "let reqf of requestedFiles">
-    <li>
+  <ion-list *ngFor = "let reqf of requestedFiles">
+    <ion-item (click) = "goToChat(reqf)">
       <h1>{{reqf.title}}</h1>
-      <img [src]="mediaProvider.mediaUrl+reqf.filename">
-      <ul *ngFor = "let tag of reqf.tags">
-        <li>{{tag}}</li>
-      </ul>
-    </li>
-  </ul>
+      <img [src]="mediaProvider.mediaUrl + (reqf.filename | thumbnail: 'medium')"/>
+      <ion-list *ngFor = "let tag of reqf.tags">
+        <ion-item>{{tag}}</ion-item>
+      </ion-list>
+      <p>{{reqf.description}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
