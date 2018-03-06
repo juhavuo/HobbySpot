@@ -28,6 +28,9 @@ export class UploadPage {
     description: '',
   };
 
+  tagsToAdd: string[] = [];
+  channelToPut: string;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public mediaProvider: MediaProvider,

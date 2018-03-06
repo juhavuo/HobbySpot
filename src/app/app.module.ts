@@ -17,7 +17,8 @@ import {AboutPage} from '../pages/about/about';
 import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
 import {LogoutPage} from '../pages/logout/logout';
-import {ChatPage} from "../pages/chat/chat";
+import {CommentsPage} from "../pages/comments/comments";
+import {TimeFormatterPipe} from "../pipes/time-formatter/time-formatter";
 
 
 @NgModule({
@@ -28,13 +29,14 @@ import {ChatPage} from "../pages/chat/chat";
     LoginPage,
     CategoriesPage,
     ThumbnailPipe,
+    TimeFormatterPipe,
     RegisterPage,
     AboutPage,
     ContactPage,
     TabsPage,
     UploadPage,
     LogoutPage,
-    ChatPage
+    CommentsPage
   ],
   imports: [
     BrowserModule,
@@ -55,13 +57,14 @@ import {ChatPage} from "../pages/chat/chat";
     TabsPage,
     UploadPage,
     LogoutPage,
-    ChatPage
+    CommentsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MediaProvider,
+    TimeFormatterPipe,
     ThumbnailPipe
   ]
 })

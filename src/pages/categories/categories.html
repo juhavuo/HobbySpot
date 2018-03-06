@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>categories</ion-title>
+    <ion-title>{{category_tag}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,7 +17,7 @@
   <ion-list *ngFor = "let reqf of requestedFiles">
     <ion-item (click) = "goToChat(reqf)">
       <h1>{{reqf.title}}</h1>
-      <img [src]="mediaProvider.mediaUrl + (reqf.filename | thumbnail: 'medium')"/>
+      <p>{{reqf.time_added | timeFormatter}}</p>
       <ion-list *ngFor = "let tag of reqf.tags">
         <ion-item>{{tag}}</ion-item>
       </ion-list>

@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Comments</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-label>{{reqfile.title}}</ion-label>
+  <img [src]="mediaProvider.mediaUrl + (reqfile.filename | thumbnail: 'medium')"/>
+  <p>{{reqfile.description}}</p>
+  <div *ngIf = "comments.length>0">
+    <h2>Comments</h2>
+    <ion-list *ngFor = "let c of comments">
+      <ion-item>
+        <p>{{c.user_name}} at {{c.time_added | timeFormatter}}</p>
+        <p>{{c.comment}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-textarea [(ngModel)]="mediaProvider.commentToAdd" placeholder="Add comment" rows = "5"></ion-textarea>
+  <button no-lines (click) = "addAComment()" >Add a comment</button>
+</ion-content>

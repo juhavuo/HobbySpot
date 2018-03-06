@@ -7,7 +7,7 @@ import {MediaProvider} from "../../providers/media/media";
 import {Mediafile} from "../../models/Mediafile";
 import {TagInfo} from "../../models/TagInfo";
 import {FileRequest} from "../../models/FileRequest";
-import {ChatPage} from "../chat/chat";
+import {CommentsPage} from "../comments/comments";
 import {LoginPage} from "../login/login";
 
 /**
@@ -70,7 +70,7 @@ export class CategoriesPage {
       filerequest: reqFile
     }
     if (localStorage.getItem('token') !== null) {
-      this.navCtrl.push(ChatPage, this.paramsForChat);
+      this.navCtrl.push(CommentsPage, this.paramsForChat);
     }else{
       this.navCtrl.push(LoginPage);
     }

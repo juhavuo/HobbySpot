@@ -12,6 +12,8 @@
       <p> Description </p>
       <textarea [(ngModel)]="media.description" name="description"></textarea>
       <br>
+      <p> Channel to use</p>
+      <input [(ngModel)]="channelToPut" type="text" name="channel">
       <button ion-button (click)="upload()" type="submit">Upload</button>
       <button ion-button (click)="cancel()"> Cancel </button>
     </form>

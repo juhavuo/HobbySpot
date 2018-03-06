@@ -9,10 +9,16 @@ export class MediaProvider {
   username: string;
   password: string;
   email: string;
+  commentToAdd: string;
+  tagToAdd: string;
   isLoggedIn = false;
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl ='http://media.mw.metropolia.fi/wbma/uploads/';
+
+  settingsX = {
+    headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+  };
 
   constructor(public http: HttpClient) {
     console.log('Hello MediaProvider Provider');
@@ -26,16 +32,14 @@ export class MediaProvider {
     return this.http.get(this.apiUrl+'/tags/file/' + fileId);
     }
 
-
+/*
   public getFileWithId(fileId:number){
     return this.http.get(this.apiUrl+'/media/'+fileId);
-  }
+  }*/
 
   public getUserInfo(userId:number){
-    const settings = {
-      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
-    };
-    return this.http.get(this.apiUrl+'/users/'+userId,settings);
+
+    return this.http.get(this.apiUrl+'/users/'+userId,this.settingsX);
   }
 
 
@@ -63,12 +67,13 @@ export class MediaProvider {
     });
   }
 
+  /*
   public getUserData() {
     const settings = {
       headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
     };
     return this.http.get(this.apiUrl + '/users/user', settings);
-  }
+  }*/
 
   getMediaFiles(start: number, amount: number){
     return this.http.get(this.apiUrl + '/media?start=' + start + '&limit=' + amount);
@@ -79,15 +84,32 @@ export class MediaProvider {
   }
 
   public upload(formData) {
-    const settings = {
-      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
-    };
+
     console.log("uploading image");
-    return this.http.post(this.apiUrl + '/media', formData, settings);
+    return this.http.post(this.apiUrl + '/media', formData, this.settingsX);
   }
 
   public getCommentsByFileId(fileId:number){
     return this.http.get(this.apiUrl+'/comments/file/'+fileId);
+  }
+
+  public addComment(fileId:number){
+
+    const cBody = {
+      "file_id": fileId,
+      "comment": this.commentToAdd
+    };
+
+    return this.http.post(this.apiUrl+'/comments',cBody, this.settingsX);
+  }
+
+  public addTag(fileId:number){
+    const tBody = {
+      "file_id": fileId,
+      "tag": this.tagToAdd
+    };
+
+    return this.http.post(this.apiUrl+'/tags',tBody, this.settingsX);
   }
 
   public requestMedia(fileId: number){
