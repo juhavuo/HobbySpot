@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Renderer2} from '@angular/core';
 import {
   IonicPage, LoadingController, NavController,
-  NavParams,
+  NavParams, Platform,
 } from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -9,12 +9,7 @@ import {Media} from '../../app/media';
 import {HomePage} from '../home/home';
 import {LoginPage} from '../login/login';
 
-/**
- * Generated class for the UploadPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -31,7 +26,7 @@ export class UploadPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public mediaProvider: MediaProvider,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,) {
   }
 
   ionViewDidLoad() {
@@ -67,4 +62,5 @@ export class UploadPage {
       console.log(e);
     });
   }
+
 }

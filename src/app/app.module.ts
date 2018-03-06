@@ -17,6 +17,7 @@ import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
 import {LogoutPage} from '../pages/logout/logout';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -54,7 +55,7 @@ import {LogoutPage} from '../pages/logout/logout';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MediaProvider,
-    ThumbnailPipe
+    ThumbnailPipe,
   ]
 })
 export class AppModule {}

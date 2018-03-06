@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  IonicPage, LoadingController, NavController,
+  NavParams,
+} from 'ionic-angular';
 import {HttpErrorResponse} from '@angular/common/http';
 import {User} from '../../app/user';
 import {MediaProvider} from '../../providers/media/media';
@@ -21,7 +24,8 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public mediaProvider: MediaProvider) {
+              public mediaProvider: MediaProvider,
+              public loadingCtrl: LoadingController) {
 
   }
 
@@ -48,7 +52,12 @@ export class RegisterPage {
 
   }
 
-  public home(){
+  cancel(){
+    let loader = this.loadingCtrl.create({
+      content: "Cancelling...",
+      duration: 100
+    });
+    loader.present();
     this.navCtrl.setRoot(HomePage);
   }
 
