@@ -1,5 +1,46 @@
-page-home {
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
+);
 
+
+page-home {}
+
+
+.searchbar{
+  background-color: #f53d3d;
+  padding: 10px;
+}
+
+.login{
+  background-color: orange;
+  padding: 5px;
+  font-size: large;
+}
+
+.register{
+  background-color: #70c1b3;
+  padding: 5px;
+  font-size: large;
+}
+
+h1{
+  text-align: center;
+  padding: 10px;
+}
+
+h5{
+  text-align: center;
+  padding: 5px;
+}
+
+ul{
+  font-size: large;
+  list-style: none;
+  padding: 5px;
 }
 
 .toolbar-background{
@@ -12,5 +53,15 @@ page-home {
 
 .hamburger {
   color: #50514f;
+}
+
+
+.addButton{
+  zoom: 3;
+  color: orangered;
+  position: absolute;
+  bottom: 0;
+  left: 75px;
+
 }
 
