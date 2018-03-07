@@ -45,8 +45,20 @@ export class RegisterPage {
       this.mediaProvider.username = this.user.username;
       this.mediaProvider.password = this.user.password;
       this.mediaProvider.email = this.user.email;
+      localStorage.setItem('token', response['token']);
+      let loader = this.loadingCtrl.create({
+        content: "Welcome " + this.user.username,
+        duration: 1500
+      });
+      loader.present();
       this.navCtrl.setRoot(HomePage);
+      this.mediaProvider.isLoggedIn = true;
     }, (error: HttpErrorResponse) => {
+      let loader = this.loadingCtrl.create({
+        content: "Username has already taken",
+        duration: 1500
+      });
+      loader.present();
       console.log(error.error.message);
     });
 
