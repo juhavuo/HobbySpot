@@ -25,6 +25,7 @@ export class HomePage {
   mainTag = 'HobbySpotTest';
 
 
+
   constructor(public navCtrl: NavController,
               public mediaProvider: MediaProvider,
               public loadingCtrl: LoadingController){
@@ -32,6 +33,9 @@ export class HomePage {
 
 
   ionViewDidLoad() {
+    if(localStorage.getItem('token') !== null){
+      this.mediaProvider.isLoggedIn = true;
+    }
     this.mediaProvider.getAllMediaWithTag(this.mainTag).subscribe((res: Mediafile[]) => {
       this.mediafiles=res;
       console.log(this.mediafiles.length);
