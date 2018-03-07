@@ -19,6 +19,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {LogoutPage} from '../pages/logout/logout';
 import {CommentsPage} from "../pages/comments/comments";
 import {TimeFormatterPipe} from "../pipes/time-formatter/time-formatter";
+import {Camera} from '@ionic-native/camera';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import {TimeFormatterPipe} from "../pipes/time-formatter/time-formatter";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MediaProvider,
     TimeFormatterPipe,
-    ThumbnailPipe
+    ThumbnailPipe,
+    Camera
   ]
 })
 export class AppModule {}

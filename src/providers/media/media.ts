@@ -11,7 +11,7 @@ export class MediaProvider {
   email: string;
   commentToAdd: string;
   tagToAdd: string;
-  isLoggedIn = false;
+  isLoggedIn: boolean = false;
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl ='http://media.mw.metropolia.fi/wbma/uploads/';

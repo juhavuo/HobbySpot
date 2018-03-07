@@ -14,7 +14,13 @@
   </ion-navbar>
   </ion-toolbar>
 </ion-header>
+<<<<<<< HEAD
+<ion-menu [content]="content" persistent=“true” id="test">
+=======
+
+
 <ion-menu [content]="content" persistent=“true”>
+>>>>>>> kendynbranch
   <ion-header class="menuHeader">
     <ion-toolbar>
       <ion-title>Menu</ion-title>
@@ -30,13 +36,13 @@
       </ion-searchbar>
 
       <!-- When user is not logged in -->
-      <div *ngIf="!mediaProvider.isLoggedIn">
+      <div *ngIf="!this.mediaProvider.isLoggedIn">
         <button no-lines class="login" ion-item (click)="login()"> Log in </button>
         <button no-lines class="register" ion-item (click)="register()"> Register </button>
       </div>
 
       <!-- When user is logged -->
-      <div *ngIf="mediaProvider.isLoggedIn">
+      <div *ngIf="this.mediaProvider.isLoggedIn">
         <h5> Recent tables </h5>
         <button no-lines class="upload" ion-item (click)="upload()"> Upload </button>
         <button no-lines class="logout" ion-item (click)="logout()"> Log out </button>
@@ -50,18 +56,26 @@
 
 <ion-content padding>
   <h1>Channels</h1>
+<<<<<<< HEAD
   <ion-list *ngFor = "let channeltag of channeltags">
     <ion-label (click) = goToChannel(channeltag) >
       {{channeltag}}
     </ion-label>
   </ion-list>
-
+=======
+  <ul *ngFor = "let channel of channels">
+    <li (click) = goToChannel(channel) >
+        {{channel}}
+    </li>
+  </ul>
 
   <!-- When user is logged in, he can see add button -->
-  <div *ngIf="mediaProvider.isLoggedIn">
+  <div *ngIf="this.mediaProvider.isLoggedIn">
     <button no-lines class="addButton" ion-item (click)="upload()">
       <ion-icon icon-only name="add-circle"></ion-icon>
     </button>
   </div>
 
+
+>>>>>>> kendynbranch
 </ion-content>

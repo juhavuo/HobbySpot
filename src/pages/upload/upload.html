@@ -2,6 +2,7 @@
 
   <ion-navbar>
     <ion-title>upload</ion-title>
+<<<<<<< HEAD
     <form>
       <p> Choose a file </p>
       <input type="file" name="file" (change)="setFile($event)">
@@ -16,13 +17,12 @@
       <input [(ngModel)]="channelToPut" type="text" name="channel">
       <button ion-button (click)="upload()" type="submit">Upload</button>
       <button ion-button (click)="cancel()"> Cancel </button>
-    </form>
+    <button ion-button (click)="upload()" type="submit">Upload</button>
+    <button ion-button (click)="cancel()"> Cancel </button>
+  </form>
 
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
+    <button ion-button (click)="captureImage()">Take photo</button>
+    <button ion-button (click)="upload()">Upload</button>
+    <canvas #myCanvas></canvas>
 
 </ion-content>
