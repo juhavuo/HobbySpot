@@ -34,6 +34,7 @@ export class HomePage {
 
   ionViewDidLoad() {
     if(localStorage.getItem('token') !== null){
+
       this.mediaProvider.isLoggedIn = true;
     }
     this.mediaProvider.getAllMediaWithTag(this.mainTag).subscribe((res: Mediafile[]) => {

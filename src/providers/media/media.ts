@@ -16,9 +16,10 @@ export class MediaProvider {
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl ='http://media.mw.metropolia.fi/wbma/uploads/';
 
+  /*
   settingsX = {
     headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
-  };
+  };*/
 
   constructor(public http: HttpClient) {
     console.log('Hello MediaProvider Provider');
@@ -39,10 +40,14 @@ export class MediaProvider {
 
   public getUserInfo(userId:number){
 
-    return this.http.get(this.apiUrl+'/users/'+userId,this.settingsX);
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+
+    return this.http.get(this.apiUrl+'/users/'+userId, settings);
   }
 
-
+  /*
   public login() {
     console.log('username: ' + this.username);
     console.log('password: ' + this.password);
@@ -65,7 +70,7 @@ export class MediaProvider {
       console.log(error.error.message);
       this.status = error.error.message;
     });
-  }
+  }*/
 
   /*
   public getUserData() {
@@ -86,7 +91,12 @@ export class MediaProvider {
   public upload(formData) {
 
     console.log("uploading image");
-    return this.http.post(this.apiUrl + '/media', formData, this.settingsX);
+
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+
+    return this.http.post(this.apiUrl + '/media', formData, settings);
   }
 
   public getCommentsByFileId(fileId:number){
@@ -100,7 +110,11 @@ export class MediaProvider {
       "comment": this.commentToAdd
     };
 
-    return this.http.post(this.apiUrl+'/comments',cBody, this.settingsX);
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+
+    return this.http.post(this.apiUrl+'/comments',cBody, settings);
   }
 
   public addTag(fileId:number){
@@ -109,7 +123,11 @@ export class MediaProvider {
       "tag": this.tagToAdd
     };
 
-    return this.http.post(this.apiUrl+'/tags',tBody, this.settingsX);
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+
+    return this.http.post(this.apiUrl+'/tags',tBody, settings);
   }
 
   public requestMedia(fileId: number){
