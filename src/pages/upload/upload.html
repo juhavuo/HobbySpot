@@ -22,12 +22,15 @@
       <p> Channel to use</p>
       <input [(ngModel)]="channelToPut" type="text" name="channel">
       <br>
+      <p> Category to use</p>
+      <input [(ngModel)] ="categoryToPut" type="text" name="category">
+      <p>Tags (separate by ,)</p>
+      <input [(ngModel)] = "tagsAsString" type="text" name="additionalStrings">
+      <br>
     <button ion-button (click)="upload()" type="submit">Upload</button>
     <button ion-button (click)="cancel()"> Cancel </button>
   </form>
 
-    <button ion-button (click)="captureImage()">Take photo</button>
-    <button ion-button (click)="upload()">Upload</button>
     <canvas #myCanvas></canvas>
 
 </ion-content>

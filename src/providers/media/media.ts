@@ -10,7 +10,6 @@ export class MediaProvider {
   password: string;
   email: string;
   commentToAdd: string;
-  tagToAdd: string;
   isLoggedIn: boolean = false;
 
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
@@ -117,10 +116,10 @@ export class MediaProvider {
     return this.http.post(this.apiUrl+'/comments',cBody, settings);
   }
 
-  public addTag(fileId:number){
+  public addTag(fileId:number, tag:string){
     const tBody = {
       "file_id": fileId,
-      "tag": this.tagToAdd
+      "tag": tag
     };
 
     const settings = {

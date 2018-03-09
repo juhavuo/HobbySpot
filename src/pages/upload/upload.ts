@@ -1,4 +1,4 @@
-import {Component, Renderer2} from '@angular/core';
+import {Component, Renderer2, ViewChild,ElementRef} from '@angular/core';
 import {
   IonicPage, LoadingController, NavController,
   NavParams, Platform,
@@ -11,16 +11,16 @@ import {LoginPage} from '../login/login';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-upload',
   templateUrl: 'upload.html',
 })
 export class UploadPage {
-  imageURL
-  canvas: any;
-  imageData: string;
+
+  @ViewChild('myCanvas') canvasRef: ElementRef;
+
+  tags: string[] = [];
 
   file: File;
   media: Media = {
@@ -28,26 +28,32 @@ export class UploadPage {
     description: '',
   };
 
-
   tagsToAdd: string[] = [];
-  channelToPut: string;
+  channelToPut: string = '';
+  categoryToPut: string = '';
+  tagsAsString: string = '';
+  moreTags: string[] = [];
+  fileId: number = 0;
+  uploadResponse: any;
 
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public mediaProvider: MediaProvider,
               public loadingCtrl: LoadingController,
-              private camera: Camera) {
+              private camera: Camera,
+              private renderer: Renderer2) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UploadPage');
   }
 
+  /*
   setFile(evt) {
     console.log(evt.target.files[0]);
     this.file = evt.target.files[0];
-  }
+  }*/
 
   public cancel(){
     let loader = this.loadingCtrl.create({
@@ -58,6 +64,12 @@ export class UploadPage {
     this.navCtrl.setRoot(HomePage);
   }
 
+  setFile(evt) {
+    console.log(evt.target.files[0]);
+    this.file = evt.target.files[0];
+
+  }
+
   public upload() {
 
     const formData = new FormData();
@@ -66,32 +78,46 @@ export class UploadPage {
     formData.append('description', this.media.description);
     console.log(formData);
 
+
+
+
     this.mediaProvider.upload(formData).subscribe(data => {
       console.log(data);
-        this.navCtrl.setRoot(UploadPage);
+
+      this.uploadResponse = data;
+      this.fileId = this.uploadResponse.file_id;
+
+      let loader = this.loadingCtrl.create({
+        content: 'Uploading media...',
+        duration: 500,
+      });
+
+      this.tags = ['HobbySpotTest'];
+      this.tags.push(this.channelToPut);
+      this.tags.push(this.categoryToPut);
+      this.moreTags = this.tagsAsString.split(',');
+      for(let i = 0;i<this.moreTags.length;++i){
+        this.tags.push(this.moreTags[i]);
+      }
+      for(let i = 0; i<this.tags.length;++i){
+        console.log('tag to add:' + this.tags[i]);
+        this.mediaProvider.addTag(this.fileId,this.tags[i]).subscribe( tagsresp => {
+          console.log('tag response: ');
+          console.log(tagsresp);
+          let loader = this.loadingCtrl.create({
+            content: 'Adding tag nro ' + i + ' of ' + this.tags.length,
+            duration: 300,
+          });
+        });
+      }
+
     }, (e: HttpErrorResponse) => {
       console.log(e);
     });
   }
 
-  captureImage() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:
-      //let base64Image = 'data:image/jpeg;base64,' + imageData;
-
-      this.imageURL = imageData
 
 
-    }, (err) => {
-      // Handle error
-    });
-
-  }
 }
+
+
