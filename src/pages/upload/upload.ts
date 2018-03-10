@@ -22,6 +22,8 @@ export class UploadPage {
 
   tags: string[] = [];
 
+  mainTag= 'HobbySpotTest';
+
   file: File;
   media: Media = {
     title: '',
@@ -35,6 +37,7 @@ export class UploadPage {
   moreTags: string[] = [];
   fileId: number = 0;
   uploadResponse: any;
+  paramData: any;
 
 
   constructor(public navCtrl: NavController,
@@ -43,6 +46,11 @@ export class UploadPage {
               public loadingCtrl: LoadingController,
               private camera: Camera,
               private renderer: Renderer2) {
+
+    this.navParams.get('paramsForUpload');
+    this.paramData = this.navParams.data;
+    console.log('lets have data in upload');
+    console.log(this.paramData.channel_infos);
   }
 
   ionViewDidLoad() {
@@ -92,7 +100,7 @@ export class UploadPage {
         duration: 500,
       });
 
-      this.tags = ['HobbySpotTest'];
+      this.tags = [this.mainTag];
       this.tags.push(this.channelToPut);
       this.tags.push(this.categoryToPut);
       this.moreTags = this.tagsAsString.split(',');
@@ -108,6 +116,7 @@ export class UploadPage {
             content: 'Adding tag nro ' + i + ' of ' + this.tags.length,
             duration: 300,
           });
+          loader.present();
         });
       }
 

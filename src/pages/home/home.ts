@@ -17,18 +17,20 @@ import {LogoutPage} from '../logout/logout';
 })
 export class HomePage {
 
+  mainTag = 'HobbySpotTest';
   mediafiles: Mediafile[] = [];
   tagInfo: TagInfo[] = [];
   channeltags:string[] = [];
   channelInfos: ForwardedTaginformation[] = [];
 
   paramsForChannel: any;
-  mainTag = 'HobbySpotTest';
+  paramsForUpload: any;
 
 
   constructor(public navCtrl: NavController,
               public mediaProvider: MediaProvider,
               public loadingCtrl: LoadingController){
+
   }
 
 
@@ -79,7 +81,12 @@ export class HomePage {
         duration: 1500
       });
       loader.present();
-      this.navCtrl.setRoot(UploadPage);
+
+      this.paramsForUpload = {
+        channel_infos: this.channelInfos
+      };
+
+      this.navCtrl.setRoot(UploadPage,this.paramsForUpload);
     }
   }
 

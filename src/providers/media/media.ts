@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MediaProvider {
 
+
   status: string;
   username: string;
   password: string;
@@ -27,6 +28,7 @@ export class MediaProvider {
   public getAllMediaWithTag(tag:string){
     return this.http.get(this.apiUrl+'/tags/' + tag);
   }
+
 
   public showTagsByFile(fileId:number){
     return this.http.get(this.apiUrl+'/tags/file/' + fileId);
