@@ -99,8 +99,9 @@ export class HomePage {
 
   // search bar functions-------------------------------------------------------
   setItems() {
-    this.items = ['hobby','school','art','travel','other']; // array of tags in here
+    this.items = this.channels; // array of tags in here
     //this.tagInfo;
+    
   }
 
   onInput(ev:any) {

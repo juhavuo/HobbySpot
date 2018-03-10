@@ -34,7 +34,7 @@
 
       <ion-list>
         <ion-item *ngFor="let item of items">
-          <li (click)=goToChannel(channel)>
+          <li (click)= setItems(channel)>
           {{item}}
           </li>
         </ion-item>
