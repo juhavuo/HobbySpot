@@ -61,7 +61,7 @@ export class HomePage {
   }
 
   register() {
-    this.navCtrl.setRoot(RegisterPage);
+    this.navCtrl.push(RegisterPage);
   }
 
   upload() {
@@ -69,7 +69,7 @@ export class HomePage {
       console.log('Upload page');
       let loader = this.loadingCtrl.create({
         content: "Please wait...",
-        duration: 1500
+        duration: 1000
       });
       loader.present();
       this.navCtrl.setRoot(UploadPage);
@@ -101,7 +101,7 @@ export class HomePage {
   setItems() {
     this.items = this.channels; // array of tags in here
     //this.tagInfo;
-    
+
   }
 
   onInput(ev:any) {
