@@ -101,17 +101,16 @@ export class UploadPage {
       this.uploadResponse = data;
       this.fileId = this.uploadResponse.file_id;
 
-      let loader = this.loadingCtrl.create({
-        content: 'Uploading media...',
-        duration: 500,
-      });
+
 
       this.tags = [this.mainTag];
+      this.channelToPut = 'ch:'+this.channelToPut;
       this.tags.push(this.channelToPut);
+      this.categoryToPut = 'ca:'+ this.categoryToPut;
       this.tags.push(this.categoryToPut);
       this.moreTags = this.tagsAsString.split(',');
       for(let i = 0;i<this.moreTags.length;++i){
-        this.tags.push(this.moreTags[i]);
+        this.tags.push('at:'+this.moreTags[i]);
       }
       for(let i = 0; i<this.tags.length;++i){
         console.log('tag to add:' + this.tags[i]);
@@ -119,9 +118,10 @@ export class UploadPage {
           console.log('tag response: ');
           console.log(tagsresp);
         });
+
         let loader = this.loadingCtrl.create({
           content: 'Adding tag nro ' + i + ' of ' + this.tags.length,
-          duration: 1000,
+          duration: 2000,
         });
         loader.present();
       }
