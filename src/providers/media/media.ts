@@ -1,5 +1,7 @@
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";
+import {TagInfo} from '../../models/TagInfo'
 
 
 @Injectable()
@@ -25,6 +27,22 @@ export class MediaProvider {
     console.log('Hello MediaProvider Provider');
   }
 
+
+  public getAllChannelTags(forwardedTags: ForwardedTaginformation[]){
+    let tagInfos: TagInfo[] = [];
+    let ctags: string[] = [];
+
+    for (let i = 0; i < forwardedTags.length; ++i){
+      if(forwardedTags[i].taginfo.length>1){
+        if(ctags.indexOf(forwardedTags[i].taginfo[1].tag)<0) {
+          ctags.push(forwardedTags[i].taginfo[1].tag);
+        }
+      }
+    }
+
+    return ctags;
+  }
+
   public getAllMediaWithTag(tag:string){
     return this.http.get(this.apiUrl+'/tags/' + tag);
   }
@@ -47,6 +65,7 @@ export class MediaProvider {
 
     return this.http.get(this.apiUrl+'/users/'+userId, settings);
   }
+
 
   /*
   public login() {
@@ -126,7 +145,7 @@ export class MediaProvider {
 
     const settings = {
       headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
-    }
+    };
 
     return this.http.post(this.apiUrl+'/tags',tBody, settings);
   }

@@ -9,6 +9,7 @@ import {Media} from '../../app/media';
 import {HomePage} from '../home/home';
 import {LoginPage} from '../login/login';
 import {Camera, CameraOptions} from '@ionic-native/camera';
+import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";
 
 
 @IonicPage()
@@ -21,8 +22,11 @@ export class UploadPage {
   @ViewChild('myCanvas') canvasRef: ElementRef;
 
   tags: string[] = [];
+  channelTags: string[] = [];
 
   mainTag= 'HobbySpotTest';
+
+  ftags: ForwardedTaginformation[];
 
   file: File;
   media: Media = {
@@ -30,7 +34,7 @@ export class UploadPage {
     description: '',
   };
 
-  tagsToAdd: string[] = [];
+  //tagsToAdd: string[] = [];
   channelToPut: string = '';
   categoryToPut: string = '';
   tagsAsString: string = '';
@@ -49,8 +53,10 @@ export class UploadPage {
 
     this.navParams.get('paramsForUpload');
     this.paramData = this.navParams.data;
-    console.log('lets have data in upload');
-    console.log(this.paramData.channel_infos);
+    this.ftags = this.paramData.forwarded_tags;
+    this.channelTags = this.mediaProvider.getAllChannelTags(this.ftags);
+    console.log('channels');
+    console.log(this.channelTags);
   }
 
   ionViewDidLoad() {

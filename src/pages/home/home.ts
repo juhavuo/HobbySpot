@@ -84,7 +84,7 @@ export class HomePage {
       loader.present();
 
       this.paramsForUpload = {
-        channel_infos: this.channelInfos
+        forwarded_tags: this.channelInfos
       };
 
       this.navCtrl.setRoot(UploadPage,this.paramsForUpload);
