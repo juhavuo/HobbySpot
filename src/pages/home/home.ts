@@ -18,7 +18,7 @@ import {getResponseURL} from '@angular/http/src/http_utils';
 
 })
 export class HomePage {
-  items: string[];
+  items: Array<string>;
   mediafiles: Mediafile[] = [];
   tagInfo: TagInfo[];
   channels: string[] = [];
@@ -65,7 +65,7 @@ export class HomePage {
   }
 
   register() {
-    this.navCtrl.setRoot(RegisterPage);
+    this.navCtrl.push(RegisterPage);
   }
 
   upload() {
@@ -73,7 +73,7 @@ export class HomePage {
       console.log('Upload page');
       let loader = this.loadingCtrl.create({
         content: "Please wait...",
-        duration: 1500
+        duration: 1000
       });
       loader.present();
       this.navCtrl.setRoot(UploadPage);
@@ -103,17 +103,18 @@ export class HomePage {
 
   // search bar functions-------------------------------------------------------
   setItems() {
-    this.items = []; // array of tags in here
+    this.items = this.channels; // array of tags in here
     //this.tagInfo;
+
   }
 
   onInput(ev:any) {
     this.setItems();
-    console.log(event);
+    console.log(ev);
     let setVal = ev.target.value;
     if (setVal && setVal.trim() != '') {
       this.items = this.items.filter(function(item) {
-        return (item);
+        return item.toLowerCase().includes(setVal.toLowerCase());
       });
     }
   }

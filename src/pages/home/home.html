@@ -25,7 +25,7 @@
 
   <ion-content>
     <ion-list>
-      <ion-searchbar class="searchbar"
+      <ion-searchbar placeholder="Search via tags" class="searchbar"
         [(ngModel)]="myInput"
         [showCancelButton]="shouldShowCancel"
         (ionInput)="onInput($event)"
@@ -34,7 +34,9 @@
 
       <ion-list>
         <ion-item *ngFor="let item of items">
+          <li (click)= setItems(channel)>
           {{item}}
+          </li>
         </ion-item>
       </ion-list>
 
@@ -49,6 +51,8 @@
       <div *ngIf="mediaProvider.isLoggedIn">
         <h5> Recent tables </h5>
         <button no-lines class="upload" ion-item (click)="upload()"> Upload </button>
+
+      <div *ngIf="this.mediaProvider.isLoggedIn">
         <button no-lines class="logout" ion-item (click)="logout()"> Log out </button>
       </div>
 
