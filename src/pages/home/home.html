@@ -27,6 +27,7 @@
     <ion-list>
       <ion-searchbar class="searchbar"
         [(ngModel)]="myInput"
+                     debounce="350"
         [showCancelButton]="shouldShowCancel"
         (ionInput)="onInput($event)"
         (ionCancel)="onCancel($event)">
@@ -38,6 +39,7 @@
         </ion-item>
       </ion-list>
 
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
       <!-- When user is not logged in -->
       <div *ngIf="!this.mediaProvider.isLoggedIn">
@@ -47,7 +49,6 @@
 
       <!-- When user is logged -->
       <div *ngIf="this.mediaProvider.isLoggedIn">
-        <h5> Recent tables </h5>
         <button no-lines class="upload" ion-item (click)="upload()"> Upload </button>
         <button no-lines class="logout" ion-item (click)="logout()"> Log out </button>
       </div>

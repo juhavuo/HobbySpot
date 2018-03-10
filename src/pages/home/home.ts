@@ -18,7 +18,8 @@ import {getResponseURL} from '@angular/http/src/http_utils';
 
 })
 export class HomePage {
-  items: string[];
+
+  items: Array<string>;
   mediafiles: Mediafile[] = [];
   tagInfo: TagInfo[];
   channels: string[] = [];
@@ -105,7 +106,7 @@ export class HomePage {
 
   onInput(ev:any) {
     this.setItems();
-    console.log(event);
+    console.log(ev);
     let setVal = ev.target.value;
     if (setVal && setVal.trim() != '') {
       this.items = this.items.filter(function(item) {
