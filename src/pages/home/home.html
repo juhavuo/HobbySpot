@@ -32,6 +32,12 @@
         (ionCancel)="onCancel($event)">
       </ion-searchbar>
 
+      <ion-list>
+        <ion-item *ngFor="let item of items">
+          {{item}}
+        </ion-item>
+      </ion-list>
+
 
       <!-- When user is not logged in -->
       <div *ngIf="!this.mediaProvider.isLoggedIn">
