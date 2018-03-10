@@ -10,20 +10,22 @@ import {UploadPage} from '../upload/upload';
 import {LoginPage} from "../login/login";
 import {TabsPage} from '../tabs/tabs';
 import {LogoutPage} from '../logout/logout';
+import {getResponseURL} from '@angular/http/src/http_utils';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
   mainTag = 'HobbySpotTest';
   mediafiles: Mediafile[] = [];
   tagInfo: TagInfo[] = [];
   channeltags:string[] = [];
   channelInfos: ForwardedTaginformation[] = [];
-
+  items: string[];
+  channels: string[] = [];
   paramsForChannel: any;
+  myInput: string;
   paramsForUpload: any;
 
 
@@ -32,7 +34,6 @@ export class HomePage {
               public loadingCtrl: LoadingController){
 
   }
-
 
   ionViewDidLoad() {
     if(localStorage.getItem('token') !== null){
@@ -61,20 +62,20 @@ export class HomePage {
 
 
 
-  login(){
-    if (localStorage.getItem('token') !==null){
+  login() {
+    if (localStorage.getItem('token') !== null) {
       console.log('You are already logged in');
-    }else {
+    } else {
       this.navCtrl.push(LoginPage);
     }
   }
 
-  register(){
+  register() {
     this.navCtrl.setRoot(RegisterPage);
   }
 
-  upload(){
-    if (localStorage.getItem('token') !==null){
+  upload() {
+    if (localStorage.getItem('token') !== null) {
       console.log('Upload page');
       let loader = this.loadingCtrl.create({
         content: "Please wait...",
@@ -90,8 +91,8 @@ export class HomePage {
     }
   }
 
-  logout(){
-    if (localStorage.getItem('token') !== null){
+  logout() {
+    if (localStorage.getItem('token') !== null) {
       localStorage.removeItem('token');
       console.log('logging out');
       let loader = this.loadingCtrl.create({
@@ -104,13 +105,31 @@ export class HomePage {
   }
 
 
-  goToChannel(channeltag: string){
-    this.paramsForChannel= {
+
+  goToChannel(channeltag: string) {
+    this.paramsForChannel = {
       chtag: channeltag,
       channel_infos: this.channelInfos
-    }
+    };
 
-    this.navCtrl.push(ChannelsPage,this.paramsForChannel);
+    this.navCtrl.push(ChannelsPage, this.paramsForChannel);
+
+  }
+  // search bar functions-------------------------------------------------------
+  setItems() {
+    this.items = []; // array of tags in here
+    //this.tagInfo;
+  }
+
+  onInput(ev:any) {
+    this.setItems();
+    console.log(event);
+    let setVal = ev.target.value;
+    if (setVal && setVal.trim() != '') {
+      this.items = this.items.filter(function(item) {
+        return (item);
+      });
+    }
   }
 
 }
