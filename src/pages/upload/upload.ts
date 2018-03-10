@@ -118,12 +118,12 @@ export class UploadPage {
         this.mediaProvider.addTag(this.fileId,this.tags[i]).subscribe( tagsresp => {
           console.log('tag response: ');
           console.log(tagsresp);
-          let loader = this.loadingCtrl.create({
-            content: 'Adding tag nro ' + i + ' of ' + this.tags.length,
-            duration: 300,
-          });
-          loader.present();
         });
+        let loader = this.loadingCtrl.create({
+          content: 'Adding tag nro ' + i + ' of ' + this.tags.length,
+          duration: 1000,
+        });
+        loader.present();
       }
 
     }, (e: HttpErrorResponse) => {
