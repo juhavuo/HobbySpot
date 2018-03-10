@@ -18,7 +18,7 @@ import {getResponseURL} from '@angular/http/src/http_utils';
 
 })
 export class HomePage {
-  items: string[];
+  items: Array<string>;
   mediafiles: Mediafile[] = [];
   tagInfo: TagInfo[];
   channels: string[] = [];
@@ -99,17 +99,17 @@ export class HomePage {
 
   // search bar functions-------------------------------------------------------
   setItems() {
-    this.items = []; // array of tags in here
+    this.items = ['hobby','school','art','travel','other']; // array of tags in here
     //this.tagInfo;
   }
 
   onInput(ev:any) {
     this.setItems();
-    console.log(event);
+    console.log(ev);
     let setVal = ev.target.value;
     if (setVal && setVal.trim() != '') {
       this.items = this.items.filter(function(item) {
-        return (item);
+        return item.toLowerCase().includes(setVal.toLowerCase());
       });
     }
   }
