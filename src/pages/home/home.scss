@@ -3,7 +3,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  custom-color: #0277bd,
 );
 
 
@@ -25,6 +26,10 @@ page-home {}
   background-color: #70c1b3;
   padding: 5px;
   font-size: large;
+}
+
+.logout{
+  background-color: #f25f5c;
 }
 
 h1{
