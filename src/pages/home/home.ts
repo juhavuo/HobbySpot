@@ -121,7 +121,7 @@ export class HomePage {
   }
   // search bar functions-------------------------------------------------------
   setItems() {
-    this.items = this.channels; // array of tags in here
+    this.items = this.channeltags; // array of tags in here
     //this.tagInfo;
 
   }
