@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-label>{{reqfile.title}}</ion-label>
+  <ion-label>{{reqfile.title}} by {{reqfile.user_name}}</ion-label>
   <img [src]="mediaProvider.mediaUrl + (reqfile.filename | thumbnail: 'medium')"/>
   <p>{{reqfile.description}}</p>
   <div *ngIf = "comments.length>0">

@@ -56,7 +56,6 @@ export class UploadPage {
     this.navParams.get('paramsForUpload');
     this.paramData = this.navParams.data;
     this.ftags = this.paramData.forwarded_tags;
-    this.channelTags = this.mediaProvider.getAllChannelTags(this.ftags);
     console.log('channels');
     console.log(this.channelTags);
   }
