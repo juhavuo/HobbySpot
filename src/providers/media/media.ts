@@ -27,6 +27,52 @@ export class MediaProvider {
     console.log('Hello MediaProvider Provider');
   }
 
+  public getTagMarkedWith(taginfos: TagInfo[],tagpart: string){
+    for (let i = 0; i < taginfos.length; ++i){
+      let index = taginfos[i].tag.indexOf(':');
+      if(index > 0){
+        let address = taginfos[i].tag.substring(0,index);
+        if(address === tagpart){
+          if(taginfos[i].tag.length>index+1){
+            return taginfos[i].tag.substring(index+1);
+          }
+        }
+      }
+    }
+
+    return '';
+  }
+
+  public getAdditionalTags(taginfos: TagInfo[]){
+    let additionalTags: string[]= [];
+    for (let i = 0; i < taginfos.length; ++i){
+      let index = taginfos[i].tag.indexOf(':');
+      if(index > 0){
+        let address = taginfos[i].tag.substring(0,index);
+        if(address === 'at'){
+          if(taginfos[i].tag.length>index+1){
+            additionalTags.push(taginfos[i].tag.substring(index+1));
+          }
+        }
+      }
+    }
+
+    return additionalTags;
+
+  }
+
+  public containsTag(taginfos: TagInfo[], searchedTag: string){
+
+
+    for (let i = 0; i< taginfos.length; ++i) {
+      if (taginfos[i].tag === searchedTag) {
+        console.log('zing');
+        return true;
+      }
+    }
+
+    return false;
+  }
 
   public getAllChannelTags(forwardedTags: ForwardedTaginformation[]){
     let tagInfos: TagInfo[] = [];

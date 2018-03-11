@@ -47,13 +47,10 @@ export class CategoriesPage {
     for(let i = 0; i<this.categoriesInfo.length;++i){
       this.tagInfos = this.categoriesInfo[i].taginfo;
       if(this.tagInfos.length>2){
-        if(this.tagInfos[2].tag === this.category_tag){
+        if(this.mediaProvider.containsTag(this.tagInfos,this.category_tag)){
           console.log(this.tagInfos);
           this.mediaProvider.requestMedia(this.tagInfos[2].file_id).subscribe((filereq: FileRequest) =>{
-            this.additionalTags = [];
-            for (let j = 3; j < this.categoriesInfo[i].taginfo.length; ++j){
-              this.additionalTags.push(this.categoriesInfo[i].taginfo[j].tag);
-            }
+            this.additionalTags = this.mediaProvider.getAdditionalTags(this.tagInfos);
             this.reqFile = filereq;
             this.reqFile.tags = this.additionalTags;
             this.requestedFiles.push(this.reqFile);

@@ -58,18 +58,21 @@ export class ChannelsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChannelsPage');
 
-    for(let i = 0; i<this.channelInfos.length;++i){
+    for (let i = 0; i < this.channelInfos.length; ++i) {
       this.tagInfos = this.channelInfos[i].taginfo;
-      if(this.tagInfos.length>2){
-        if(this.tagInfos[1].tag === this.channel_tag){
-          console.log(this.tagInfos);
+      if (this.tagInfos.length > 2) {
+        if (this.mediaProvider.containsTag(this.tagInfos,this.channel_tag)) {
           this.ftagInformation.push({
             taginfo: this.tagInfos
           });
-          let categorytagindex = this.categorytags.indexOf(this.tagInfos[2].tag);
-          if(categorytagindex<0){
-            this.categorytags.push(this.tagInfos[2].tag);
+          let categorytag = this.mediaProvider.getTagMarkedWith(this.tagInfos,'ca');
+          if(categorytag.length>0) {
+            let categorytagindex = this.categorytags.indexOf(categorytag);
+            if(categorytagindex<0){
+              this.categorytags.push(categorytag);
+            }
           }
+
         }
       }
     }
@@ -78,7 +81,7 @@ export class ChannelsPage {
   goToCategories(categoryTag:string){
 
     this.paramsForCategories = {
-      catag: categoryTag,
+      catag: 'ca:'+categoryTag,
       category_infos: this.ftagInformation
     };
 

@@ -17,7 +17,7 @@ import {getResponseURL} from '@angular/http/src/http_utils';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  mainTag = 'HobbySpotTest';
+  mainTag = 'HobbySpot';
   mediafiles: Mediafile[] = [];
   tagInfo: TagInfo[] = [];
   channeltags:string[] = [];
@@ -42,7 +42,6 @@ export class HomePage {
     }
     this.mediaProvider.getAllMediaWithTag(this.mainTag).subscribe((res: Mediafile[]) => {
       this.mediafiles=res;
-      console.log(this.mediafiles.length);
       for(let i = 0; i < this.mediafiles.length;++i){
         this.mediaProvider.showTagsByFile(this.mediafiles[i].file_id).subscribe((res2: TagInfo[]) => {
           this.tagInfo = res2;
@@ -50,10 +49,15 @@ export class HomePage {
             this.channelInfos.push({
               taginfo: this.tagInfo
             });
-            let channeltagindex = this.channeltags.indexOf(this.tagInfo[1].tag);
-            if(channeltagindex<0){
-              this.channeltags.push(this.tagInfo[1].tag);
+            let channeltag = this.mediaProvider.getTagMarkedWith(this.tagInfo,'ch');
+            if(channeltag.length>0) {
+              console.log('channeltag ' + i + ' is ' + channeltag);
+              let channeltagindex = this.channeltags.indexOf(channeltag);
+              if(channeltagindex<0){
+                this.channeltags.push(channeltag);
+              }
             }
+
           }
         });
       }
@@ -108,7 +112,7 @@ export class HomePage {
 
   goToChannel(channeltag: string) {
     this.paramsForChannel = {
-      chtag: channeltag,
+      chtag: 'ch:'+channeltag,
       channel_infos: this.channelInfos
     };
 

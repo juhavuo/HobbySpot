@@ -24,7 +24,7 @@ export class UploadPage {
   tags: string[] = [];
   channelTags: string[] = [];
 
-  mainTag= 'HobbySpotTest';
+  mainTag= 'HobbySpot';
 
   ftags: ForwardedTaginformation[];
 
