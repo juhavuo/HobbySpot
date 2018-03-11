@@ -37,8 +37,10 @@ export class UploadPage {
   //tagsToAdd: string[] = [];
   channelToPut: string = '';
   categoryToPut: string = '';
+  extraTags: string = '';
   tagsAsString: string = '';
   moreTags: string[] = [];
+  additionalTags: string = '';
   fileId: number = 0;
   uploadResponse: any;
   paramData: any;
