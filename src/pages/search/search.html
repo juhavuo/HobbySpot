@@ -14,9 +14,14 @@
 
 
 <ion-content padding>
+  <h1>Searched with tag: {{searchTag}} </h1>
 <ion-list *ngFor = "let file of searchedFiles">
-  <ion-item>
-    <img [src]="mediaProvider.mediaUrl + (file.filename | thumbnail: 'medium')"/>
-  </ion-item>
+  <div class="categoryBox">
+    <ion-item (click) = "goToChat(file)">
+      <h1>{{file.title}}</h1>
+      <p>{{file.description}}</p>
+      <p>{{file.time_added | timeFormatter}}</p>
+    </ion-item>
+  </div>
 </ion-list>
 </ion-content>
