@@ -123,7 +123,6 @@ export class HomePage {
   setItems() {
     const tgs = this.mediaProvider.getTagslisted(this.channelInfos);
     this.items = tgs; // array of tags in here
-    //this.tagInfo;
 
 
   }
@@ -138,6 +137,5 @@ export class HomePage {
       });
     }
   }
-
 }
 

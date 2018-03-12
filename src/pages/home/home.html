@@ -13,6 +13,7 @@
     </ion-title>
   </ion-navbar>
   </ion-toolbar>
+
 </ion-header>
 <ion-menu [content]="content" persistent=“true”>
   <ion-header class="menuHeader">
@@ -20,6 +21,7 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <ion-content>
     <ion-list>
       <ion-searchbar placeholder="Search via tags" class="searchbar"
@@ -58,9 +60,11 @@
   <h1>Channels</h1>
   <div class="channelList">
   <ion-list *ngFor = "let channeltag of channeltags">
+    <div class="mainMenuBox">
     <ion-label (click) = goToChannel(channeltag) >
       {{channeltag}}
     </ion-label>
+    </div>
   </ion-list>
   </div>
 
