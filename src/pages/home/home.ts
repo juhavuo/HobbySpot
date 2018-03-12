@@ -11,6 +11,7 @@ import {LoginPage} from "../login/login";
 import {TabsPage} from '../tabs/tabs';
 import {LogoutPage} from '../logout/logout';
 import {getResponseURL} from '@angular/http/src/http_utils';
+import {ProfilePage} from "../profile/profile";
 
 @Component({
   selector: 'page-home',
@@ -78,6 +79,13 @@ export class HomePage {
     this.navCtrl.push(RegisterPage);
   }
 
+  profile(){
+    if (localStorage.getItem('token') !== null){
+      console.log('Profile page');
+    }
+    this.navCtrl.push(ProfilePage);
+  }
+
   upload() {
     if (localStorage.getItem('token') !== null) {
       console.log('Upload page');
@@ -123,8 +131,6 @@ export class HomePage {
   setItems() {
     const tgs = this.mediaProvider.getTagslisted(this.channelInfos);
     this.items = tgs; // array of tags in here
-
-
   }
 
   onInput(ev:any) {

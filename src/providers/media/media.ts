@@ -78,8 +78,7 @@ export class MediaProvider {
 
     return false;
   }
-
-  /*
+/*
   public getAllChannelTags(forwardedTags: ForwardedTaginformation[]){
     let tagInfos: TagInfo[] = [];
     let ctags: string[] = [];

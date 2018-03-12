@@ -36,6 +36,7 @@ export class CommentsPage {
   commenter: UserInfo;
   uploader: UserInfo;
 
+
   addedDescription: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {

@@ -20,6 +20,7 @@ import {LogoutPage} from '../pages/logout/logout';
 import {CommentsPage} from "../pages/comments/comments";
 import {TimeFormatterPipe} from "../pipes/time-formatter/time-formatter";
 import {Camera} from '@ionic-native/camera';
+import {ProfilePage} from "../pages/profile/profile";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {Camera} from '@ionic-native/camera';
     HomePage,
     ChannelsPage,
     LoginPage,
+    ProfilePage,
     CategoriesPage,
     ThumbnailPipe,
     TimeFormatterPipe,
@@ -51,6 +53,7 @@ import {Camera} from '@ionic-native/camera';
     ChannelsPage,
     CategoriesPage,
     LoginPage,
+    ProfilePage,
     RegisterPage,
     UploadPage,
     AboutPage,
