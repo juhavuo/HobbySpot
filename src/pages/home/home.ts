@@ -124,6 +124,7 @@ export class HomePage {
     this.items = this.channeltags; // array of tags in here
     //this.tagInfo;
 
+
   }
 
   onInput(ev:any) {

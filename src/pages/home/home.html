@@ -56,11 +56,13 @@
 
 <ion-content padding>
   <h1>Channels</h1>
+  <div class="channelList">
   <ion-list *ngFor = "let channeltag of channeltags">
     <ion-label (click) = goToChannel(channeltag) >
       {{channeltag}}
     </ion-label>
   </ion-list>
+  </div>
 
 
   <!-- When user is logged in, he can see add button -->
