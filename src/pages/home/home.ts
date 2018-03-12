@@ -12,6 +12,7 @@ import {TabsPage} from '../tabs/tabs';
 import {LogoutPage} from '../logout/logout';
 import {getResponseURL} from '@angular/http/src/http_utils';
 import {ProfilePage} from "../profile/profile";
+import {SearchPage} from "../search/search";
 
 @Component({
   selector: 'page-home',
@@ -28,6 +29,7 @@ export class HomePage {
   paramsForChannel: any;
   myInput: string;
   paramsForUpload: any;
+  paramsForSearch: any;
 
 
   constructor(public navCtrl: NavController,
@@ -64,8 +66,6 @@ export class HomePage {
       }
     });
   }
-
-
 
   login() {
     if (localStorage.getItem('token') !== null) {
@@ -134,17 +134,42 @@ export class HomePage {
     console.log(this.items);
   }
 
+  goToSearchPage(item:string) {
+    const parts = item.split(', ');
+    let tagForSearchPage: string = '';
+    if(parts[parts.length-1] === 'channel'){
+      tagForSearchPage = 'ch:';
+    }else if(parts[parts.length-1] === 'category'){
+      tagForSearchPage = 'ca:';
+    }else if(parts[parts.length-1] ==='additional tag'){
+      tagForSearchPage = 'at:';
+    }
+    for( let i = 0; i<parts.length-1; ++i){
+      tagForSearchPage = tagForSearchPage+parts[i];
+    }
+    this.paramsForSearch = {
+      tag: tagForSearchPage
+    };
+
+    this.navCtrl.push(SearchPage,this.paramsForSearch);
 
 
-  onInput(ev:any) {
-    this.setItems();
+  }
+
+
+
+  onInput(ev) {
     console.log(ev);
+    this.setItems();
     let setVal = ev.target.value;
     if (setVal && setVal.trim() != '') {
+      console.log(ev.data);
       this.items = this.items.filter(function(item) {
         return item.toLowerCase().includes(setVal.toLowerCase());
       });
     }
   }
+
+
 }
 

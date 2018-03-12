@@ -21,6 +21,7 @@ import {CommentsPage} from "../pages/comments/comments";
 import {TimeFormatterPipe} from "../pipes/time-formatter/time-formatter";
 import {Camera} from '@ionic-native/camera';
 import {ProfilePage} from "../pages/profile/profile";
+import {SearchPage} from "../pages/search/search";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {ProfilePage} from "../pages/profile/profile";
     TabsPage,
     UploadPage,
     LogoutPage,
-    CommentsPage
+    CommentsPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import {ProfilePage} from "../pages/profile/profile";
     TabsPage,
     UploadPage,
     LogoutPage,
-    CommentsPage
+    CommentsPage,
+    SearchPage
   ],
   providers: [
     StatusBar,
