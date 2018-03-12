@@ -27,6 +27,9 @@ export class MediaProvider {
     console.log('Hello MediaProvider Provider');
   }
 
+  /*
+    Fetches tags with beginning part as given by tagpart, like tagpart:tag
+   */
   public getTagMarkedWith(taginfos: TagInfo[],tagpart: string){
     for (let i = 0; i < taginfos.length; ++i){
       let index = taginfos[i].tag.indexOf(':');
@@ -43,6 +46,9 @@ export class MediaProvider {
     return '';
   }
 
+  /*
+    Get list of tags with tagpart at
+   */
   public getAdditionalTags(taginfos: TagInfo[]){
     let additionalTags: string[]= [];
     for (let i = 0; i < taginfos.length; ++i){
@@ -66,7 +72,6 @@ export class MediaProvider {
 
     for (let i = 0; i< taginfos.length; ++i) {
       if (taginfos[i].tag === searchedTag) {
-        console.log('zing');
         return true;
       }
     }
@@ -90,6 +95,11 @@ export class MediaProvider {
     return ctags;
   }*/
 
+  /*
+    Get all tags listed exept main tag like this:
+    tagname, tagtype
+    tagtypes are: channel,category,additional tag
+   */
   public getTagslisted(forwardedTags: ForwardedTaginformation[]){
     let tags : string[] = [];
     for (let i = 0; i<forwardedTags.length;++i){
@@ -119,6 +129,9 @@ export class MediaProvider {
   }
 
 
+  /*
+    Get all the tags of file by using it's id
+   */
   public showTagsByFile(fileId:number){
     return this.http.get(this.apiUrl+'/tags/file/' + fileId);
     }
@@ -128,6 +141,9 @@ export class MediaProvider {
     return this.http.get(this.apiUrl+'/media/'+fileId);
   }*/
 
+  /*
+    With this one can fetch user_name using id of the user
+   */
   public getUserInfo(userId:number){
 
     const settings = {
@@ -135,6 +151,19 @@ export class MediaProvider {
     }
 
     return this.http.get(this.apiUrl+'/users/'+userId, settings);
+  }
+
+  /*
+    Gets the id, name and full name of the user
+   */
+  public getCurrentUser(){
+
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    };
+
+    return this.http.get(this.apiUrl + '/users/user', settings);
+
   }
 
 
@@ -171,9 +200,10 @@ export class MediaProvider {
     return this.http.get(this.apiUrl + '/users/user', settings);
   }*/
 
+  /*
   getMediaFiles(start: number, amount: number){
     return this.http.get(this.apiUrl + '/media?start=' + start + '&limit=' + amount);
-  }
+  }*/
 
   public register(user) {
     return this.http.post(this.apiUrl + '/users', user);
@@ -190,10 +220,16 @@ export class MediaProvider {
     return this.http.post(this.apiUrl + '/media', formData, settings);
   }
 
+  /*
+    Get the comments of file by using it's id
+   */
   public getCommentsByFileId(fileId:number){
     return this.http.get(this.apiUrl+'/comments/file/'+fileId);
   }
 
+  /*
+    Add a comment to file with given id
+   */
   public addComment(fileId:number){
 
     const cBody = {
@@ -208,6 +244,9 @@ export class MediaProvider {
     return this.http.post(this.apiUrl+'/comments',cBody, settings);
   }
 
+  /*
+    Adds one tag to file with given id
+   */
   public addTag(fileId:number, tag:string){
     const tBody = {
       "file_id": fileId,
@@ -221,6 +260,9 @@ export class MediaProvider {
     return this.http.post(this.apiUrl+'/tags',tBody, settings);
   }
 
+  /*
+    Get all media parameters using file id (fetches for example file_title, file_name and so on...)
+   */
   public requestMedia(fileId: number){
     return this.http.get(this.apiUrl+'/media/'+fileId);
   }
