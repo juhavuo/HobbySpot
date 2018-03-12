@@ -74,6 +74,7 @@ export class MediaProvider {
     return false;
   }
 
+  /*
   public getAllChannelTags(forwardedTags: ForwardedTaginformation[]){
     let tagInfos: TagInfo[] = [];
     let ctags: string[] = [];
@@ -87,6 +88,30 @@ export class MediaProvider {
     }
 
     return ctags;
+  }*/
+
+  public getTagslisted(forwardedTags: ForwardedTaginformation[]){
+    let tags : string[] = [];
+    for (let i = 0; i<forwardedTags.length;++i){
+      for(let j = 0; j<forwardedTags[i].taginfo.length;++j){
+        let tagToTrim = forwardedTags[i].taginfo[j].tag;
+        if(tagToTrim.indexOf(':')>0){
+          let tagToAdd = '';
+          let tagParts = tagToTrim.split(':');
+          if(tagParts[0] === 'ch'){
+            tagToAdd = tagParts[1] +', channel';
+          }else if(tagParts[0] === 'ca'){
+            tagToAdd = tagParts[1]+', category';
+          }else if(tagParts[0] === 'at'){
+            tagToAdd = tagParts[1] +', additional tag';
+          }
+          if(tags.indexOf(tagToAdd)<0){
+            tags.push(tagToAdd);
+          }
+        }
+      }
+    }
+    return tags;
   }
 
   public getAllMediaWithTag(tag:string){

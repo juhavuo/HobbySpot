@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";
 import {CommentInfo} from "../../models/CommentInfo";
 import {CategoriesInfo} from "../../models/CategoriesInfo";
@@ -35,7 +35,8 @@ export class CategoriesPage {
   paramsForChat: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public mediaProvider: MediaProvider) {
+              public mediaProvider: MediaProvider,
+              public loadigCtrl: LoadingController) {
     this.navParams.get('paramsForCategories');
     this.data = this.navParams.data;
     this.categoriesInfo = this.data.category_infos;
@@ -44,13 +45,15 @@ export class CategoriesPage {
   }
 
   ionViewDidLoad(){
-    for(let i = 0; i<this.categoriesInfo.length;++i){
+    for(let i = 0; i<this.categoriesInfo.length;++i) {
       this.tagInfos = this.categoriesInfo[i].taginfo;
-      if(this.tagInfos.length>2){
-        if(this.mediaProvider.containsTag(this.tagInfos,this.category_tag)){
+      if (this.tagInfos.length > 2) {
+        if (this.mediaProvider.containsTag(this.tagInfos, this.category_tag)) {
           console.log(this.tagInfos);
-          this.mediaProvider.requestMedia(this.tagInfos[2].file_id).subscribe((filereq: FileRequest) =>{
-            this.additionalTags = this.mediaProvider.getAdditionalTags(this.tagInfos);
+          this.mediaProvider.requestMedia(this.tagInfos[2].file_id).subscribe((filereq: FileRequest) => {
+            this.additionalTags = [];
+            this.additionalTags = this.mediaProvider.getAdditionalTags(this.categoriesInfo[i].taginfo);
+            console.log(this.additionalTags);
             this.reqFile = filereq;
             this.reqFile.tags = this.additionalTags;
             this.requestedFiles.push(this.reqFile);
@@ -59,6 +62,7 @@ export class CategoriesPage {
         }
       }
     }
+
     console.log(this.requestedFiles);
   }
 

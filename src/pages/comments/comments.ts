@@ -28,11 +28,13 @@ export class CommentsPage {
     description: '',
     media_type: '',
     mime_type: '',
-    time_added: ''
+    time_added: '',
+    user_name: ''
   };
 
   comments: CommentInfo[] = [];
   commenter: UserInfo;
+  uploader: UserInfo;
 
   addedDescription: string = '';
 
@@ -44,6 +46,12 @@ export class CommentsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
+    this.mediaProvider.getUserInfo(this.reqfile.user_id).subscribe( (userResponse: UserInfo) => {
+      this.uploader = userResponse;
+      this.reqfile.user_name = userResponse.username;
+      console.log(this.reqfile.user_name);
+      console.log(this.reqfile.user_id);
+    });
     this.getCommensRequest();
   }
 

@@ -10,5 +10,6 @@ export class FileRequest{
   mime_type: string;
   time_added: string;
   tags?: string[];
+  user_name?: string;
 
 }
