@@ -1,0 +1,27 @@
+<!--
+  Generated template for the CategoriesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{category_tag}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <p>{{categoriesInfo.category_tag}}</p>
+  <ion-list *ngFor = "let reqf of requestedFiles">
+    <ion-item (click) = "goToChat(reqf)">
+      <h1>{{reqf.title}}</h1>
+      <p>{{reqf.time_added | timeFormatter}}</p>
+      <ion-list *ngFor = "let tag of reqf.tags">
+        <ion-item>{{tag}}</ion-item>
+      </ion-list>
+      <p>{{reqf.description}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

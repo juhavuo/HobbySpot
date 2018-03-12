@@ -1,0 +1,202 @@
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";
+import {TagInfo} from '../../models/TagInfo'
+
+
+@Injectable()
+export class MediaProvider {
+
+
+  status: string;
+  username: string;
+  password: string;
+  email: string;
+  commentToAdd: string;
+  isLoggedIn: boolean = false;
+
+  apiUrl = 'http://media.mw.metropolia.fi/wbma';
+  mediaUrl ='http://media.mw.metropolia.fi/wbma/uploads/';
+
+  /*
+  settingsX = {
+    headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+  };*/
+
+  constructor(public http: HttpClient) {
+    console.log('Hello MediaProvider Provider');
+  }
+
+  public getTagMarkedWith(taginfos: TagInfo[],tagpart: string){
+    for (let i = 0; i < taginfos.length; ++i){
+      let index = taginfos[i].tag.indexOf(':');
+      if(index > 0){
+        let address = taginfos[i].tag.substring(0,index);
+        if(address === tagpart){
+          if(taginfos[i].tag.length>index+1){
+            return taginfos[i].tag.substring(index+1);
+          }
+        }
+      }
+    }
+
+    return '';
+  }
+
+  public getAdditionalTags(taginfos: TagInfo[]){
+    let additionalTags: string[]= [];
+    for (let i = 0; i < taginfos.length; ++i){
+      let index = taginfos[i].tag.indexOf(':');
+      if(index > 0){
+        let address = taginfos[i].tag.substring(0,index);
+        if(address === 'at'){
+          if(taginfos[i].tag.length>index+1){
+            additionalTags.push(taginfos[i].tag.substring(index+1));
+          }
+        }
+      }
+    }
+
+    return additionalTags;
+
+  }
+
+  public containsTag(taginfos: TagInfo[], searchedTag: string){
+
+
+    for (let i = 0; i< taginfos.length; ++i) {
+      if (taginfos[i].tag === searchedTag) {
+        console.log('zing');
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public getAllChannelTags(forwardedTags: ForwardedTaginformation[]){
+    let tagInfos: TagInfo[] = [];
+    let ctags: string[] = [];
+
+    for (let i = 0; i < forwardedTags.length; ++i){
+      if(forwardedTags[i].taginfo.length>1){
+        if(ctags.indexOf(forwardedTags[i].taginfo[1].tag)<0) {
+          ctags.push(forwardedTags[i].taginfo[1].tag);
+        }
+      }
+    }
+
+    return ctags;
+  }
+
+  public getAllMediaWithTag(tag:string){
+    return this.http.get(this.apiUrl+'/tags/' + tag);
+  }
+
+
+  public showTagsByFile(fileId:number){
+    return this.http.get(this.apiUrl+'/tags/file/' + fileId);
+    }
+
+/*
+  public getFileWithId(fileId:number){
+    return this.http.get(this.apiUrl+'/media/'+fileId);
+  }*/
+
+  public getUserInfo(userId:number){
+
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+
+    return this.http.get(this.apiUrl+'/users/'+userId, settings);
+  }
+
+
+  /*
+  public login() {
+    console.log('username: ' + this.username);
+    console.log('password: ' + this.password);
+    console.log('email: ' + this.email);
+
+    const body = {
+      username: this.username,
+      password: this.password,
+      email: this.email,
+    };
+
+    const settings = {
+      headers: new HttpHeaders().set('Content-type', 'application/json'),
+    };
+
+    this.http.post(this.apiUrl + '/login', body, settings).subscribe(response => {
+      console.log(response['token']);
+      localStorage.setItem('token', response['token']);
+    }, (error: HttpErrorResponse) => {
+      console.log(error.error.message);
+      this.status = error.error.message;
+    });
+  }*/
+
+  /*
+  public getUserData() {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+    };
+    return this.http.get(this.apiUrl + '/users/user', settings);
+  }*/
+
+  getMediaFiles(start: number, amount: number){
+    return this.http.get(this.apiUrl + '/media?start=' + start + '&limit=' + amount);
+  }
+
+  public register(user) {
+    return this.http.post(this.apiUrl + '/users', user);
+  }
+
+  public upload(formData) {
+
+    console.log("uploading image");
+
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+
+    return this.http.post(this.apiUrl + '/media', formData, settings);
+  }
+
+  public getCommentsByFileId(fileId:number){
+    return this.http.get(this.apiUrl+'/comments/file/'+fileId);
+  }
+
+  public addComment(fileId:number){
+
+    const cBody = {
+      "file_id": fileId,
+      "comment": this.commentToAdd
+    };
+
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+
+    return this.http.post(this.apiUrl+'/comments',cBody, settings);
+  }
+
+  public addTag(fileId:number, tag:string){
+    const tBody = {
+      "file_id": fileId,
+      "tag": tag
+    };
+
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    };
+
+    return this.http.post(this.apiUrl+'/tags',tBody, settings);
+  }
+
+  public requestMedia(fileId: number){
+    return this.http.get(this.apiUrl+'/media/'+fileId);
+  }
+}

@@ -1,0 +1,19 @@
+<!--
+  Generated template for the ChannelsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{channel_tag}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngFor = "let ctag of categorytags">
+    <ion-item (click) = "goToCategories(ctag)">
+      {{ctag}}
+    </ion-item>
+  </ion-list>
+</ion-content>

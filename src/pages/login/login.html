@@ -1,0 +1,19 @@
+<ion-content class="loginBackground">
+  <ion-card>
+    <ion-card-header>
+	    <h1>Login</h1>
+    </ion-card-header>
+    <ion-card-content>
+<ion-list no-line>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="username" placeholder="Username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+  </ion-item>
+  <button ion-button (click)="login()" [round]="true" type="submit">Login</button>
+  <button ion-button (click)="cancel()" [round]="true"> Cancel </button>
+</ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

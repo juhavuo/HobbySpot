@@ -1,0 +1,76 @@
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  custom-color: #0277bd,
+);
+
+
+page-home {}
+
+
+.searchbar{
+  background-color: #50514f;
+  padding: 10px;
+}
+
+.login{
+  background-color: #ffe066;
+  padding: 5px;
+  font-size: large;
+}
+
+.register{
+  background-color: #70c1b3;
+  padding: 5px;
+  font-size: large;
+}
+.profile{
+  background-color: #32db64;
+  padding: 5px;
+}
+
+.logout{
+  background-color: #f25f5c;
+}
+
+h1{
+  text-align: center;
+  padding: 10px;
+}
+
+h5{
+  text-align: center;
+  padding: 5px;
+}
+
+ul{
+  font-size: large;
+  list-style: none;
+  padding: 5px;
+}
+
+.toolbar-background{
+  background-color: #247ba0;
+}
+
+.toolbar-title{
+  color: white;
+}
+
+.hamburger {
+  color: #50514f;
+}
+
+
+.addButton{
+  zoom: 3;
+  color: orangered;
+  position: absolute;
+  bottom: 0;
+  left: 75px;
+
+}
+

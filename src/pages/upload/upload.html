@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>upload</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-title>upload</ion-title>
+    <form>
+      <p> Choose a file </p>
+      <input type="file" name="file" (change)="setFile($event)">
+      <br>
+      <p> Title </p>
+      <input [(ngModel)]="media.title" type="text" name="title">
+      <br>
+      <p> Description </p>
+      <textarea [(ngModel)]="media.description" name="description"></textarea>
+      <br>
+      <p> Channel to use</p>
+      <input [(ngModel)]="channelToPut" type="text" name="channel">
+      <br>
+      <p> Category to use</p>
+      <input [(ngModel)] ="categoryToPut" type="text" name="category">
+      <p>Tags (separate by ,)</p>
+      <input [(ngModel)] = "tagsAsString" type="text" name="additionalStrings">
+      <br>
+    <button ion-button (click)="upload()" type="submit">Upload</button>
+    <button ion-button (click)="cancel()"> Cancel </button>
+  </form>
+
+</ion-content>
