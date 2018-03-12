@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";

@@ -15,13 +15,15 @@
 <ion-content padding>
   <p>{{categoriesInfo.category_tag}}</p>
   <ion-list *ngFor = "let reqf of requestedFiles">
+    <div class="categoryBox">
     <ion-item (click) = "goToChat(reqf)">
       <h1>{{reqf.title}}</h1>
-      <p>{{reqf.time_added | timeFormatter}}</p>
-      <ion-list *ngFor = "let tag of reqf.tags">
-        <ion-item>{{tag}}</ion-item>
-      </ion-list>
       <p>{{reqf.description}}</p>
+      <p>{{reqf.time_added | timeFormatter}}</p>
+      <ul class="tagList" *ngFor = "let tag of reqf.tags">
+        <li>{{tag}}</li>
+      </ul>
     </ion-item>
+    </div>
   </ion-list>
 </ion-content>
