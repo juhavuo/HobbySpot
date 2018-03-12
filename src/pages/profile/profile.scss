@@ -12,6 +12,17 @@ body {
   font-family: 'Helvetica';
 
 }
+.toolbar-background{
+  background-color: #247ba0;
+}
+
+.toolbar-title{
+  color: white;
+}
+
+.hamburger {
+  color: #50514f;
+}
 
 .pContainer {
   height: calc(100% - 60px);
@@ -31,7 +42,7 @@ a {
 
 // Top View
 .top-view {
-  height: 50%;
+  height: 60%;
   background: url(https://unsplash.it/1080/720/?random) no-repeat;
   background-size: cover;
   color: $white;
@@ -57,7 +68,7 @@ a {
     display: block;
   }
 
-  .header {
+  .pHeader {
     position: relative;
     box-sizing: border-box;
   }
@@ -79,17 +90,8 @@ a {
       height: 100%;
       width: 100%;
       position: relative;
-    }
-
-    .notifications {
-      position: absolute;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      text-align: center;
-      top: 0;
-      right: 0;
-      font-weight: 300;
+      bottom: 20%;
+      }
       span {
         font-size: 14px;
         display: block;
@@ -97,14 +99,13 @@ a {
         top: 50%;
         margin-top: -7px;
       }
-    }
+     }
 
     // Bottom View
     .bottom-view {
       height: 50%;
       overflow: hidden;
     }
-
     .post-container {
       //background-color: red;
       padding: 5px 20px;
@@ -124,7 +125,7 @@ a {
       margin-top: -7px;
     }
 
-    &.day-names span {
+    &.username span {
       color: $grey;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -150,13 +151,5 @@ a {
           font-weight: 500;
         }
       }
-      .time {
-        color: $grey;
-        font-weight: 300;
-        font-size: 14px;
-        display: block;
-        margin-top: 10px;
-      }
     }
   }
-}

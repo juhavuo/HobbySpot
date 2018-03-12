@@ -4,26 +4,35 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<ion-header>
+  <ion-toolbar>
+    <ion-nav #content [root]="rootPage"></ion-nav>
+    <ion-navbar>
+      <button class="hamburger" ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        HobbySpot
+      </ion-title>
+    </ion-navbar>
+  </ion-toolbar>
 <div class="pContainer">
   <div class="top-view">
     <div class="color-layer">
       <div class="navbar">
-        <button class="hamburger" ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
       </div>
-      <div class="header">
+      <div class="pHeader">
         <h1>My Profile</h1>
         <div class="myProfile-container">
-          <img src="assets/img/duckling_600x480.jpg" alt="" class="profile pmain">
+          <img src="assets/img/duckling_600x480.jpg" alt="" class="myProfile pmain">
         </div>
-      </div>
-      <div class="month-selection">
-        <span class="username">Username</span>
       </div>
     </div>
   </div>
   <div class="bottom-view">
+    <div>
+      <span class="username">Username</span>
+    </div>
     <div class="post-container">
     </div>
     <div class="entry-container">
