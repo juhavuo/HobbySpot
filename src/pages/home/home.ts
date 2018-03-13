@@ -30,6 +30,7 @@ export class HomePage {
   myInput: string;
   paramsForUpload: any;
   paramsForSearch: any;
+  paramsForProfile:any;
 
 
   constructor(public navCtrl: NavController,
@@ -83,7 +84,12 @@ export class HomePage {
     if (localStorage.getItem('token') !== null){
       console.log('Profile page');
     }
-    this.navCtrl.push(ProfilePage);
+
+    this.paramsForProfile = {
+      files: this.mediafiles
+    };
+
+    this.navCtrl.push(ProfilePage,this.paramsForProfile);
   }
 
   upload() {

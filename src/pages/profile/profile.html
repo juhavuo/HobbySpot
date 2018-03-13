@@ -34,6 +34,13 @@
     <div class="post-container">
     </div>
     <div class="entry-container">
+      <ul *ngFor = "let file of filteredFiles">
+        <li>
+          <h3>{{file.title}}</h3>
+          <img [src]="mediaProvider.mediaUrl + (file.filename | thumbnail: 'medium')"/>
+          <p>{{file.description}}</p>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
