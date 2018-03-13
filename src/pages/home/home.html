@@ -45,7 +45,6 @@
       </div>
 
       <!-- When user is logged -->
-
       <div *ngIf="mediaProvider.isLoggedIn">
         <button no-lines class="profile" ion-item (click)="profile()"> Profile </button>
     	</div>
@@ -59,7 +58,7 @@
 
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
 
-<ion-content padding>
+<ion-content class="mainMenuBackground">
   <h1>Channels</h1>
   <div class="channelList">
   <ion-list *ngFor = "let channeltag of channeltags">
@@ -73,10 +72,9 @@
 
 
   <!-- When user is logged in, he can see add button -->
-  <div *ngIf="mediaProvider.isLoggedIn">
-    <button no-lines class="addButton" ion-item (click)="upload()">
-      <ion-icon icon-only name="add-circle"></ion-icon>
+  <ion-fab bottom right *ngIf="mediaProvider.isLoggedIn">
+    <button no-lines class="addButton" ion-fab (click)="upload()">
+      <ion-icon icon-only name="add"></ion-icon>
     </button>
-  </div>
-
+  </ion-fab>
 </ion-content>
