@@ -14,12 +14,11 @@
     </ion-navbar>
   </ion-toolbar>
 </ion-header>
-<ion-content padding>
+<ion-content>
 <div class="pContainer">
+  <div class="navbar">
   <div class="top-view">
-    <div class="color-layer">
-      <div class="navbar">
-      </div>
+
       <div class="pHeader">
         <h1>My Profile</h1>
         <div class="myProfile-container">
@@ -29,9 +28,8 @@
       <div class="user-selection">
         <span class="username">{{users.username}}</span>
       </div>
-    </div>
   </div>
-  <div class="bottom-view">
+    <div class = "bottom-view">
     <div class="post-container">
       <ul *ngFor = "let file of filteredFiles">
         <li>
@@ -40,9 +38,10 @@
           <p>{{file.description}}</p>
         </li>
       </ul>
+      </div>
     </div>
 
-  </div>
+</div>
 </div>
 
 </ion-content>
