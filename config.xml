@@ -20,7 +20,6 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
-        <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/HobbySpot.png" />
         <splash density="land-ldpi" src="resources/android/splash/HobbySpot.png" />
     </platform>
@@ -67,6 +66,8 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <allow-navigation href="http://192.168.80.1:8100" />
     <plugin name="cordova-plugin-camera" spec="^4.0.2" />
+    <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="android" spec="7.0.0" />
 </widget>

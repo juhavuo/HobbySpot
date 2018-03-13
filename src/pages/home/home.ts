@@ -8,7 +8,9 @@ import {TagInfo} from "../../models/TagInfo";
 import {RegisterPage} from '../register/register';
 import {UploadPage} from '../upload/upload';
 import {LoginPage} from "../login/login";
+import {TabsPage} from '../tabs/tabs';
 import {LogoutPage} from '../logout/logout';
+import {getResponseURL} from '@angular/http/src/http_utils';
 import {ProfilePage} from "../profile/profile";
 
 @Component({
@@ -127,8 +129,8 @@ export class HomePage {
   }
   // search bar functions-------------------------------------------------------
   setItems() {
-    this.items = this.channels; // array of tags in here
-    //this.tagInfo;
+    const tgs = this.mediaProvider.getTagslisted(this.channelInfos);
+    this.items = tgs; // array of tags in here
   }
 
   onInput(ev:any) {
