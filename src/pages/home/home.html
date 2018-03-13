@@ -32,7 +32,7 @@
 
       <ion-list>
         <ion-item *ngFor="let item of items">
-          <li (click)= setItems(channel)>
+          <li (click) = "goToSearchPage(item)">
           {{item}}
           </li>
         </ion-item>
