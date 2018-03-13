@@ -1,10 +1,51 @@
 page-contact {
+  align-content: center;
 
 }
 //placement for the logo
+.logoCon{
+  align-content: center;
+}
 #egn{
   transform: -50%, -50%;
-  left:30%;
-  right: 70%;
+  align-content: space-between;
+  right: 30%;
 }
+//Containers and cards placement
+.contentTop{
+  height: calc(100% - 60px);
+  max-width: 400px;
+  min-height: 600px;
+  margin: 30px auto 0;
+  box-shadow: 0px 0px 5px #000000;
+  box-sizing: border-box;
+  position: relative;
+}
+#contentIn{
+  align-content: center;
+  text-align: center;
+}
+.ion-avatar{
+  margin:auto;
+}
+#pP{
+  align-content: center;
+  transform: translate(80%,0px);
+  padding-bottom: 10px;
+}
+.cardJuha {
+  border-style: solid;
+  border-color: #0277bd;
+  position: center;
+}
+.cardEmma{
+  border-style: solid;
+  border-color: #ffe066;
+  align-content: center;
+}
+.cardKendy{
+  border-style: solid;
+  border-color: #f25f5c;
+  align-items: center;
 
+}

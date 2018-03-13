@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  IonicPage, LoadingController, NavController,
+  IonicPage, NavController,
   NavParams,
 } from 'ionic-angular';
 import {User} from '../../app/user';
@@ -24,8 +24,7 @@ export class ProfilePage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public mediaProvider: MediaProvider,
-              public loadingCtrl: LoadingController) {
+              public mediaProvider: MediaProvider) {
 
   }
 
@@ -34,8 +33,11 @@ export class ProfilePage {
     password: '',
     email: '',
   };
-
+  //method to get Users username show in the profile page
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
+    this.mediaProvider.getCurrentUser().subscribe(response =>{
+        this.users.username = response['username']
+    });
   }
 }
