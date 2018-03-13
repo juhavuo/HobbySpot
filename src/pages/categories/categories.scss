@@ -1,2 +1,16 @@
 page-categories {
 }
+
+.categoryBox{
+  border-style: solid;
+  border-width: 2px;
+  background-color: lightgreen;
+}
+
+.tagList{
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  display: inline-block;
+}
+

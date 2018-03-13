@@ -12,8 +12,11 @@
 
 <ion-content padding>
   <ion-list *ngFor = "let ctag of categorytags">
+    <div class="channelBox">
     <ion-item (click) = "goToCategories(ctag)">
       {{ctag}}
     </ion-item>
+    </div>
   </ion-list>
 </ion-content>
+
