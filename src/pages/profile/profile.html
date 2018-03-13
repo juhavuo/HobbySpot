@@ -14,6 +14,7 @@
     </ion-navbar>
   </ion-toolbar>
 </ion-header>
+<ion-content padding>
 <div class="pContainer">
   <div class="top-view">
     <div class="color-layer">
@@ -32,8 +33,6 @@
   </div>
   <div class="bottom-view">
     <div class="post-container">
-    </div>
-    <div class="entry-container">
       <ul *ngFor = "let file of filteredFiles">
         <li>
           <h3>{{file.title}}</h3>
@@ -42,6 +41,9 @@
         </li>
       </ul>
     </div>
+
   </div>
 </div>
+
+</ion-content>
 
