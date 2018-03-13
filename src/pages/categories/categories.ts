@@ -63,7 +63,6 @@ export class CategoriesPage {
         }
       }
     }
-
     console.log(this.requestedFiles);
   }
 

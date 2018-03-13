@@ -1,18 +1,15 @@
-<ion-header>
+<ion-content class="uploadBackground">
+<ion-card>
 
-  <ion-navbar>
-    <ion-title>upload</ion-title>
-
-  </ion-navbar>
-
-</ion-header>
-
-<ion-content padding>
+  <ion-card-header>
+    <h1>Upload</h1>
+  </ion-card-header>
+  <ion-card-content>
   <ion-title>upload</ion-title>
     <form>
       <p> Choose a file </p>
       <input type="file" name="file" (change)="setFile($event)">
-      <br>
+      <br><br><br>
       <p> Title </p>
       <input [(ngModel)]="media.title" type="text" name="title">
       <br>
@@ -27,8 +24,9 @@
       <p>Tags (separate by ,)</p>
       <input [(ngModel)] = "tagsAsString" type="text" name="additionalStrings">
       <br>
-    <button ion-button (click)="upload()" type="submit">Upload</button>
-    <button ion-button (click)="cancel()"> Cancel </button>
+    <button ion-button (click)="upload()" [round]="true" type="submit">Upload</button>
+    <button ion-button (click)="cancel()" [round]="true"> Cancel </button>
   </form>
-
+  </ion-card-content>
+</ion-card>
 </ion-content>

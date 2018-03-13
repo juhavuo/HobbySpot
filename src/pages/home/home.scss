@@ -38,6 +38,10 @@ page-home {}
   padding: 5px;
   font-size: large;
 }
+.profile{
+  background-color: #32db64;
+  padding: 5px;
+}
 
 .logout{
   background-color: #f25f5c;
@@ -73,11 +77,10 @@ ul{
 
 
 .addButton{
-  zoom: 3;
-  color: orangered;
-  position: absolute;
-  bottom: 0;
-  left: 75px;
+  color: black;
+  background-color: orangered;
+}
 
+.mainMenuBackground{
 }
 
