@@ -20,8 +20,24 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
-        <icon density="ldpi" src="resources/android/icon/HobbySpot.png" />
-        <splash density="land-ldpi" src="resources/android/splash/HobbySpot.png" />
+      <icon density="ldpi" src="resources/android/icon/HobbySpot_avatar.png" />
+      <icon density="mdpi" src="resources/android/icon/HobbySpot_avatar.png" />
+      <icon density="hdpi" src="resources/android/icon/HobbySpot_avatar.png" />
+      <icon density="xhdpi" src="resources/android/icon/HobbySpot_avatar.png" />
+      <icon density="xxhdpi" src="resources/android/icon/HobbySpot_avatar.png" />
+      <icon density="xxxhdpi" src="resources/android/icon/HobbySpot_avatar.png" />
+      <splash density="land-ldpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="land-mdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="land-hdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="land-xhdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="land-xxhdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="land-xxxhdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="port-ldpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="port-mdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="port-hdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="port-xhdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="port-xxhdpi" src="resources/android/splash/HobbySpot_avatar.png" />
+      <splash density="port-xxxhdpi" src="resources/android/splash/HobbySpot_avatar.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
