@@ -20,12 +20,12 @@
   <div *ngIf = "comments.length>0">
     <h2>Comments</h2>
     <ion-list *ngFor = "let c of comments">
-      <ion-item>
+      <ion-item class="commentBox">
         <p>{{c.user_name}} at {{c.time_added | timeFormatter}}</p>
         <p>{{c.comment}}</p>
       </ion-item>
     </ion-list>
   </div>
-  <ion-textarea [(ngModel)]="mediaProvider.commentToAdd" placeholder="Add comment" rows = "5"></ion-textarea>
-  <button no-lines (click) = "addAComment()" >Add a comment</button>
+  <input [(ngModel)]="mediaProvider.commentToAdd" placeholder="Add comment" rows = "5" padding >
+  <button ion-button (click) = "addAComment()" [round]="true" >Add a comment</button>
 </ion-content>

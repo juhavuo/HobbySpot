@@ -10,6 +10,7 @@ import {HomePage} from '../home/home';
 import {LoginPage} from '../login/login';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {ForwardedTaginformation} from "../../models/ForwardedTaginformation";
+import {CommentsPage} from '../comments/comments';
 
 
 @IonicPage()
@@ -125,6 +126,7 @@ export class UploadPage {
           duration: 2000,
         });
         loader.present();
+          this.navCtrl.push(HomePage);
       }
 
     }, (e: HttpErrorResponse) => {
