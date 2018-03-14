@@ -71,6 +71,7 @@ export class CommentsPage {
         this.mediaProvider.getUserInfo(this.comments[i].user_id).subscribe((response2: UserInfo) => {
           this.commenter = response2;
           this.comments[i].user_name = this.commenter.username;
+          console.log(this.comments[i].comment);
         });
       }
     });

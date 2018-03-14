@@ -22,10 +22,10 @@
     <ion-list *ngFor = "let c of comments">
       <ion-item class="commentBox">
         <p>{{c.user_name}} at {{c.time_added | timeFormatter}}</p>
-        <p>{{c.comment}}</p>
+        <ion-item [innerHTML]="c.comment" text-wrap></ion-item>
       </ion-item>
     </ion-list>
   </div>
-  <input [(ngModel)]="mediaProvider.commentToAdd" placeholder="Add comment" rows = "5" padding >
+  <ion-textarea [(ngModel)]="mediaProvider.commentToAdd" placeholder="Add comment" rows = "5" padding ></ion-textarea>
   <button ion-button (click) = "addAComment()" [round]="true" >Add a comment</button>
 </ion-content>
