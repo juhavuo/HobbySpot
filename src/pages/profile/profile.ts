@@ -7,6 +7,8 @@ import {User} from '../../app/user';
 import {MediaProvider} from '../../providers/media/media';
 import {Mediafile} from "../../models/Mediafile";
 import {UserInfo} from "../../models/UserInfo";
+import {FileRequest} from "../../models/FileRequest";
+import {CommentsPage} from "../comments/comments";
 
 
 /**
@@ -25,6 +27,7 @@ export class ProfilePage {
 
 
   data: any;
+  paramsForChat: any;
   unfilteredFiles: Mediafile[] = [];
   filteredFiles: Mediafile[] = [];
   users: UserInfo = {
@@ -57,16 +60,23 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
     this.mediaProvider.getCurrentUser().subscribe((response: UserInfo) =>{
       this.users = response;
-      
+
       for(let i = 0; i < this.unfilteredFiles.length;++i){
         if(this.unfilteredFiles[i].user_id === this.users.user_id){
           this.filteredFiles.push(this.unfilteredFiles[i]);
         }
       }
-      
+
       /*
         this.users.username = response['username']
         this.users.*/
     });
+  }
+
+  goToChat(reqFile: FileRequest) {
+    this.paramsForChat = {
+      filerequest: reqFile
+    }
+    this.navCtrl.push(CommentsPage, this.paramsForChat);
   }
 }

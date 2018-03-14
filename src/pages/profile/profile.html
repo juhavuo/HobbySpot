@@ -15,34 +15,34 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-<div class="pContainer">
   <div class="navbar">
-  <div class="top-view">
+    <div class="pContainer">
 
-      <div class="pHeader">
-        <h1>My Profile</h1>
-        <div class="myProfile-container">
-          <img src="assets/img/duckling_600x480.jpg" alt="" class="myProfile pmain">
+
+      <div class="top-view">
+
+        <div class="pHeader">
+          <h1>Profile of {{users.username}}</h1>
+          <div class="myProfile-container">
+            <img src="assets/img/duckling_600x480.jpg" alt="" class="myProfile pmain">
+          </div>
         </div>
       </div>
-      <div class="user-selection">
-        <span class="username">{{users.username}}</span>
+      <div class = "bottom-view">
+        <div class="post-container">
+          <h2>Posts of {{users.username}}</h2>
+          <ul *ngFor = "let file of filteredFiles">
+            <li (click) = goToChat(file)>
+              <h3>{{file.title}}</h3>
+              <img [src]="mediaProvider.mediaUrl + (file.filename | thumbnail: 'medium')"/>
+              <p>{{file.description}}</p>
+            </li>
+          </ul>
+        </div>
       </div>
-  </div>
-    <div class = "bottom-view">
-    <div class="post-container">
-      <ul *ngFor = "let file of filteredFiles">
-        <li>
-          <h3>{{file.title}}</h3>
-          <img [src]="mediaProvider.mediaUrl + (file.filename | thumbnail: 'medium')"/>
-          <p>{{file.description}}</p>
-        </li>
-      </ul>
-      </div>
-    </div>
 
-</div>
-</div>
+    </div>
+  </div>
 
 </ion-content>
 

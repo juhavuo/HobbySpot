@@ -25,7 +25,7 @@ body {
 }
 
 .pContainer {
-  height: calc(100% - 60px);
+  height: 100%;
   max-width: 400px;
   min-height: 600px;
   margin: 30px auto 0;
@@ -61,10 +61,13 @@ a {
     padding: 20px 20px 0 20px;
     box-sizing: border-box;
     position: relative;
+
 }
 .navbar {
     padding: 10px;
     display: block;
+    box-shadow: 0px 0px 5px $black;
+    box-sizing: border-box;
 }
 .pHeader {
     position: relative;
