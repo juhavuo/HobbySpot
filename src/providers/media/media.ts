@@ -18,10 +18,7 @@ export class MediaProvider {
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl ='http://media.mw.metropolia.fi/wbma/uploads/';
 
-  /*
-  settingsX = {
-    headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
-  };*/
+
 
   constructor(public http: HttpClient) {
     console.log('Hello MediaProvider Provider');
@@ -78,21 +75,7 @@ export class MediaProvider {
 
     return false;
   }
-/*
-  public getAllChannelTags(forwardedTags: ForwardedTaginformation[]){
-    let tagInfos: TagInfo[] = [];
-    let ctags: string[] = [];
 
-    for (let i = 0; i < forwardedTags.length; ++i){
-      if(forwardedTags[i].taginfo.length>1){
-        if(ctags.indexOf(forwardedTags[i].taginfo[1].tag)<0) {
-          ctags.push(forwardedTags[i].taginfo[1].tag);
-        }
-      }
-    }
-
-    return ctags;
-  }*/
 
   /*
     Get all tags listed exept main tag like this:
@@ -135,10 +118,6 @@ export class MediaProvider {
     return this.http.get(this.apiUrl+'/tags/file/' + fileId);
     }
 
-/*
-  public getFileWithId(fileId:number){
-    return this.http.get(this.apiUrl+'/media/'+fileId);
-  }*/
 
   /*
     With this one can fetch user_name using id of the user
@@ -166,43 +145,7 @@ export class MediaProvider {
   }
 
 
-  /*
-  public login() {
-    console.log('username: ' + this.username);
-    console.log('password: ' + this.password);
-    console.log('email: ' + this.email);
 
-    const body = {
-      username: this.username,
-      password: this.password,
-      email: this.email,
-    };
-
-    const settings = {
-      headers: new HttpHeaders().set('Content-type', 'application/json'),
-    };
-
-    this.http.post(this.apiUrl + '/login', body, settings).subscribe(response => {
-      console.log(response['token']);
-      localStorage.setItem('token', response['token']);
-    }, (error: HttpErrorResponse) => {
-      console.log(error.error.message);
-      this.status = error.error.message;
-    });
-  }*/
-
-  /*
-  public getUserData() {
-    const settings = {
-      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
-    };
-    return this.http.get(this.apiUrl + '/users/user', settings);
-  }*/
-
-  /*
-  getMediaFiles(start: number, amount: number){
-    return this.http.get(this.apiUrl + '/media?start=' + start + '&limit=' + amount);
-  }*/
 
   public register(user) {
     return this.http.post(this.apiUrl + '/users', user);

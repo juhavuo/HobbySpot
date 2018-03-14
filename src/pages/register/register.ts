@@ -74,7 +74,7 @@ export class RegisterPage {
         this.navCtrl.setRoot(HomePage);
 
       });
-      
+
     }, (error: HttpErrorResponse) => {
       let loader = this.loadingCtrl.create({
         content: "Username has already taken",

@@ -13,6 +13,8 @@ import {CategoriesInfo} from "../../models/CategoriesInfo";
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
+ *
+ *
  */
 
 @IonicPage()
@@ -30,20 +32,7 @@ export class ChannelsPage {
   categorytags: string[] =[];
   tagInfos: TagInfo[];
 
-  filedata: any;
-  mediafiles: Mediafile[] =[];
-  avatarImages: Mediafile[] = [];
-  face: Mediafile = {
-    file_id: 0,
-  filename: '',
-  filesize: 0,
-  title: '',
-  description: '',
-  user_id: 0,
-  media_type: '',
-  mime_type: '',
-  time_added: ''
-  };
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public mediaProvider: MediaProvider) {

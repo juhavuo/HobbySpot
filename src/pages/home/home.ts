@@ -32,6 +32,17 @@ export class HomePage {
   paramsForSearch: any;
   paramsForProfile:any;
 
+  /*
+    Tagsystem: everything is searched with maintag first, maintag is used only for that,
+    form of channeltag is: ch:tagName,
+    categorytag: ca:tagName,
+    additional tag: at:tagName
+
+    Here tags of all files with tag HobbySpot are collected to variable channelInfos,
+    it is list of ForwardedTagInformation objects, all of witch contains list of TagInfo-objects,
+    which has name and id of tag stored and also id of file that tag is attached to.
+
+   */
 
   constructor(public navCtrl: NavController,
               public mediaProvider: MediaProvider,
