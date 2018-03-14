@@ -59,6 +59,7 @@ export class CommentsPage {
   addAComment(){
     this.mediaProvider.addComment(this.reqfile.file_id).subscribe(res => {
       console.log(res);
+      this.mediaProvider.commentToAdd = '';
       this.getCommensRequest();
     });
   }

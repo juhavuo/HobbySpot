@@ -26,6 +26,6 @@
       </ion-item>
     </ion-list>
   </div>
-  <ion-textarea [(ngModel)]="mediaProvider.commentToAdd" placeholder="Add comment" rows = "5" padding ></ion-textarea>
+  <ion-textarea [(ngModel)]="mediaProvider.commentToAdd" placeholder="Add comment" rows = "5" padding name="commentingarea"></ion-textarea>
   <button ion-button (click) = "addAComment()" [round]="true" >Add a comment</button>
 </ion-content>
